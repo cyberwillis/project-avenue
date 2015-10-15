@@ -9,22 +9,18 @@ using NUnit.Framework;
 namespace AvenueEntrega.Services.UnitTest
 {
     [TestFixture]
-    public class Class1
+    public class Test_Model_Aggregation
     {
         private Malha _malha;
-        private Mapa _mapa;
 
 
         [SetUp]
-
         public void Init()
         {
-            this._malha = new Malha();
-
-            this._mapa = new Mapa()
+            var mapa = new Mapa()
             {
                 NomeMapa = "TestMap",
-                Malha = new List<Rota>()
+                Rotas = new List<Rota>()
                 {
                     new Rota(){Origem = "A",Destino = "B", Custo = 10.0f},
                     new Rota(){Origem = "B",Destino = "D", Custo = 15.0f},
@@ -34,26 +30,12 @@ namespace AvenueEntrega.Services.UnitTest
                     new Rota(){Origem = "D",Destino = "E", Custo = 30.0f},
                 }
             };
+            this._malha = new Malha(mapa.Rotas);
         }
 
         [Test]
         public void When_Loading_Meshes_Verify_Counting_Edges_Will_Pass()
         {
-            foreach (var rota in _mapa.Malha)
-            {
-                if (this._malha.Direcoes.ContainsKey(rota.Origem))
-                {
-                    
-                    //add/update
-                    this._malha.Direcoes[rota.Origem].Add(rota);
-                }
-                else
-                {
-                    //create
-                    this._malha.Direcoes.Add(rota.Origem, new List<Rota>(){rota});
-                }
-            }
-
             Assert.IsTrue(this._malha.Direcoes.ContainsKey("A"));
             Assert.IsTrue(this._malha.Direcoes["A"].Count == 2);
             Assert.IsTrue(this._malha.Direcoes.ContainsKey("B"));
