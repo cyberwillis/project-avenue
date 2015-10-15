@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AvenueEntrega.Model.Entities;
 
 namespace AvenueEntrega.Model
 {

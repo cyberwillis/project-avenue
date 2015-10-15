@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AvenueEntrega.Model;
+using AvenueEntrega.Model.Entities;
 using NUnit.Framework;
+using Malha = AvenueEntrega.Model.Malha;
 
 namespace AvenueEntrega.Services.UnitTest
 {
