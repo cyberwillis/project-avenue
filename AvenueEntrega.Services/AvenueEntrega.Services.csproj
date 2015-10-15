@@ -39,8 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aggregator.cs" />
+    <Compile Include="MalhaServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AvenueEntrega.Model\AvenueEntrega.Model.csproj">
+      <Project>{372EB104-48F2-48C3-9585-FFDBA6E1C641}</Project>
+      <Name>AvenueEntrega.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
