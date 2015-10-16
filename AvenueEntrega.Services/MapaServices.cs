@@ -56,7 +56,7 @@ namespace AvenueEntrega.Services
                 //Opcoes de Busca
                 if (!string.IsNullOrEmpty(request.Mapa.Id))
                 {
-                    id = request.Mapa.ConvertToMapa().Id;
+                    id = Guid.Parse(request.Mapa.Id);
                     mapa = _mapaRepository.FindBy(id);
                 }
                 else if (!string.IsNullOrEmpty(request.Mapa.NomeMapa))
