@@ -7,8 +7,8 @@
     <ProjectGuid>{541FFF2F-7157-4280-8378-2501324E6069}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AvenueEntrega.Services.UnitTest</RootNamespace>
-    <AssemblyName>AvenueEntrega.Services.UnitTest</AssemblyName>
+    <RootNamespace>AvenueEntrega.Rules.UnitTest</RootNamespace>
+    <AssemblyName>AvenueEntrega.Rules.UnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test_Model_Aggregation.cs" />
+    <Compile Include="Extensions\MapaExtensions.cs" />
+    <Compile Include="Mother.cs" />
+    <Compile Include="When_Defining_Mapa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -53,6 +55,10 @@
     <ProjectReference Include="..\AvenueEntrega.Model\AvenueEntrega.Model.csproj">
       <Project>{372EB104-48F2-48C3-9585-FFDBA6E1C641}</Project>
       <Name>AvenueEntrega.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.Rules\AvenueEntrega.Rules.csproj">
+      <Project>{E5D41D1B-B9F5-4E64-9351-2DC18759A4A8}</Project>
+      <Name>AvenueEntrega.Rules</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
