@@ -5,7 +5,7 @@
         public string NomeMapa { get; set; }
         public string Origem { get; set; }
         public string Destino { get; set; }
-        public float AutonomiaVeiculo { get; set; }
-        public float ValorCombustivel { get; set; }
+        public decimal AutonomiaVeiculo { get; set; }
+        public decimal ValorCombustivel { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace AvenueEntrega.Model.Entities
         public Guid Id { get; set; }
         public string Origem { get; set; }
         public string Destino { get; set; }
-        public float Custo { get; set; }
+        public decimal Custo { get; set; }
     }
 }

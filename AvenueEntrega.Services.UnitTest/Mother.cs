@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AvenueEntrega.Model.Entities;
 
-namespace AvenueEntrega.Rules.UnitTest
+namespace AvenueEntrega.Services.UnitTest
 {
     /// <summary>
     /// TDD ObjectMotherPattern

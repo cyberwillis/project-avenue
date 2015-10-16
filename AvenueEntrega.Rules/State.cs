@@ -5,9 +5,9 @@ namespace AvenueEntrega.Rules
     public class State
     {
         public string Name { get; }
-        public float Cost { get; }
+        public decimal Cost { get; }
         public State Parent { get; }
-        public State(string name, State parent, float cost)
+        public State(string name, State parent, decimal cost)
         {
             Name = name;
             Parent = parent;

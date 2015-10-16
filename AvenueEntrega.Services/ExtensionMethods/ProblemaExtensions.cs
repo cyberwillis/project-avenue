@@ -32,8 +32,8 @@ namespace AvenueEntrega.Services.ExtensionMethods
             problema.NomeMapa = problemaDto.NomeMapa;
             problema.Origem = problemaDto.Origem;
             problema.Destino = problemaDto.Destino;
-            problema.AutonomiaVeiculo = float.Parse(problemaDto.AutonomiaVeiculo);
-            problema.ValorCombustivel = float.Parse(problemaDto.ValorCombustivel);
+            problema.AutonomiaVeiculo = decimal.Parse(problemaDto.AutonomiaVeiculo);
+            problema.ValorCombustivel = decimal.Parse(problemaDto.ValorCombustivel);
 
             return problema;
         }

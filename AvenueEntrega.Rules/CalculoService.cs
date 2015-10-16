@@ -25,7 +25,7 @@ namespace AvenueEntrega.Rules
         /// <param name="autonomiaDoVeiculo"></param>
         /// <param name="valorDoLitroDeCombustivel"></param>
         /// <returns></returns>
-        public ResultadoCalculo Process(string origem, string destino, float autonomiaDoVeiculo, float valorDoLitroDeCombustivel)
+        public ResultadoCalculo Process(string origem, string destino, decimal autonomiaDoVeiculo, decimal valorDoLitroDeCombustivel)
         {
             this._rotas = CopyFrom(this._mapa.Rotas);
 
@@ -37,7 +37,7 @@ namespace AvenueEntrega.Rules
             if (state != null)
             {
                 //Calculates best cost
-                float custoTotalDeDeslocamento = CalculateBestCost(state.Cost, autonomiaDoVeiculo, valorDoLitroDeCombustivel);
+                decimal custoTotalDeDeslocamento = CalculateBestCost(state.Cost, autonomiaDoVeiculo, valorDoLitroDeCombustivel);
                 result = new ResultadoCalculo()
                 {
                     MelhorCaminho = state.GetPath(),
@@ -48,7 +48,7 @@ namespace AvenueEntrega.Rules
             return result;
         }
 
-        private float CalculateBestCost(float custoDeslocamento, float autonomiaDoVeiculo, float valorDoLitroDeCombustivel)
+        private decimal CalculateBestCost(decimal custoDeslocamento, decimal autonomiaDoVeiculo, decimal valorDoLitroDeCombustivel)
         {
             return (custoDeslocamento / autonomiaDoVeiculo) * valorDoLitroDeCombustivel;
         }
@@ -76,7 +76,7 @@ namespace AvenueEntrega.Rules
         /// <returns></returns>
         public State ChiepestFirstSearch(string start, string goal)
         {
-            State initialState = new State(start, null, 0f);
+            State initialState = new State(start, null, 0.0m);
 
             IList<State> paths = new List<State>();
 
@@ -182,7 +182,7 @@ namespace AvenueEntrega.Rules
         /// <returns></returns>
         private State GetStateWithLowestCost(IList<State> frontiers)
         {
-            var cost = float.MaxValue;
+            var cost = decimal.MaxValue;
             State state = null;
 
             foreach (var item in frontiers)

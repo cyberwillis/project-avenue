@@ -62,9 +62,9 @@ namespace AvenueEntrega.Rules.UnitTest
         {
             CalculoService service = new CalculoService(this._testMapa);
 
-            var result = service.Process("A", "D",10, 2.50f);
+            var result = service.Process("A", "D",10, 2.50m);
 
-            Assert.IsTrue(result.CustoTotal == 6.25f);
+            Assert.IsTrue(result.CustoTotal == 6.25m);
         }
 
         [Test]
@@ -120,7 +120,7 @@ namespace AvenueEntrega.Rules.UnitTest
 
             var state = service.ChiepestFirstSearch("Arad", "Bucharest");
 
-            Assert.IsTrue(state.Cost == 418.000f);
+            Assert.IsTrue(state.Cost == 418.000m);
         }
     }
 }

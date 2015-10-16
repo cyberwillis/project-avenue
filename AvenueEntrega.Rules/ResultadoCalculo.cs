@@ -4,7 +4,7 @@ namespace AvenueEntrega.Rules
 {
     public class ResultadoCalculo
     {
-        public float CustoTotal { get; set; }
+        public decimal CustoTotal { get; set; }
         public IList<string> MelhorCaminho { get; set; }
 
         public ResultadoCalculo()

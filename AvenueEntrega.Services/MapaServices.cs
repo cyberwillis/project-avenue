@@ -1,6 +1,7 @@
 ﻿using System;
 using AvenueEntrega.DataContracts.Messages.Mapa;
 using AvenueEntrega.DataContracts.Messages.Problema;
+using AvenueEntrega.Model.Entities;
 using AvenueEntrega.Model.Repository;
 using AvenueEntrega.Rules;
 using AvenueEntrega.ServiceContracts;
@@ -45,11 +46,25 @@ namespace AvenueEntrega.Services
 
         public EncontrarMapaPorResponse EncontrarMapaPor(EncontrarMapaPorRequest request)
         {
+            Mapa mapa = null;
+            Guid id;
+            string nomeMapa;
+
             var response = new EncontrarMapaPorResponse();
             try
             {
-                var id = request.Mapa.ConvertToMapa().Id;
-                var mapa = _mapaRepository.FindBy(id);
+                //Opcoes de Busca
+                if (!string.IsNullOrEmpty(request.Mapa.Id))
+                {
+                    id = request.Mapa.ConvertToMapa().Id;
+                    mapa = _mapaRepository.FindBy(id);
+                }
+                else if (!string.IsNullOrEmpty(request.Mapa.NomeMapa))
+                {
+                    nomeMapa = request.Mapa.NomeMapa;
+                    mapa = _mapaRepository.FindByName(nomeMapa);
+                }
+                
                 if (mapa != null)
                 {
                     response.Success = true;

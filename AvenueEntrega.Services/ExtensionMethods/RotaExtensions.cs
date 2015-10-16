@@ -35,7 +35,7 @@ namespace AvenueEntrega.Services.ExtensionMethods
 
             rota.Origem = rotaDto.Origem;
             rota.Destino = rotaDto.Destino;
-            rota.Custo = float.Parse(rotaDto.Custo);
+            rota.Custo = decimal.Parse(rotaDto.Custo);
 
             return rota;
         }
