@@ -1,7 +1,9 @@
-﻿namespace AvenueEntrega.DataContracts.Messages.Mapa
+﻿using AvenueEntrega.DataContracts.Dto;
+
+namespace AvenueEntrega.DataContracts.Messages.Mapa
 {
     public class EncontrarMapaPorRequest
     {
-        public string NomeMapa { get; set; } 
+        public MapaDto Mapa { get; set; } 
     }
 }

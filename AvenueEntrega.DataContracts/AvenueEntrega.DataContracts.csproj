@@ -41,9 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\MapaDto.cs" />
+    <Compile Include="Dto\ProblemaDto.cs" />
     <Compile Include="Dto\RotaDto.cs" />
     <Compile Include="Messages\Mapa\AlterarMapaRequest.cs" />
     <Compile Include="Messages\Mapa\AlterarMapaResponse.cs" />
+    <Compile Include="Messages\Problema\CalcularMelhorRotaRequest.cs" />
     <Compile Include="Messages\Mapa\EncontrarMapaPorRequest.cs" />
     <Compile Include="Messages\Mapa\EncontrarMapaPorResponse.cs" />
     <Compile Include="Messages\Mapa\EncontrarTodosMapasResponse.cs" />
@@ -51,12 +53,11 @@
     <Compile Include="Messages\Mapa\ExcluirMapaResponse.cs" />
     <Compile Include="Messages\Mapa\InserirMapaRequest.cs" />
     <Compile Include="Messages\Mapa\InserirMapaResponse.cs" />
+    <Compile Include="Messages\Problema\CalcularMelhorRotaResponse.cs" />
     <Compile Include="Messages\ResponseBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Messages\Rota\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
