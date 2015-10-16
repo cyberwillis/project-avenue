@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.Rules", "AvenueEntrega.Rules\AvenueEntrega.Rules.csproj", "{E5D41D1B-B9F5-4E64-9351-2DC18759A4A8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Entregas Bounded Context", "1.Entregas Bounded Context", "{23B5EFF8-54FF-4DDE-93A3-F79EABCBBABD}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Delivery Bounded Context", "1.Delivery Bounded Context", "{23B5EFF8-54FF-4DDE-93A3-F79EABCBBABD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.Model", "AvenueEntrega.Model\AvenueEntrega.Model.csproj", "{372EB104-48F2-48C3-9585-FFDBA6E1C641}"
 EndProject

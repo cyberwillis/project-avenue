@@ -18,11 +18,11 @@ namespace AvenueEntrega.Rules.Specification
             if(string.IsNullOrEmpty(problema.Destino))
                 problema.BrokenRules.Add("Destino", "O destino deve ser especificado.");
 
-            if(Math.Abs(problema.AutonomiaVeiculo)< 0.01)
-                problema.BrokenRules.Add("AutonomiaVeiculo","O veículo deve possuir uma autonomia.");
+            if(Math.Abs(problema.AutonomiaVeiculo)< 0.001)
+                problema.BrokenRules.Add("AutonomiaVeiculo","A autonomia do veículo nao pode ser zero.");
 
             if(Math.Abs(problema.ValorCombustivel) < 0.001)
-                problema.BrokenRules.Add("ValorCombustivel", "O combustível deve possuir um custo.");
+                problema.BrokenRules.Add("ValorCombustivel", "O valod do combustivel nao pode ser zero.");
 
             //TODO: declare more specifications if needed
         }

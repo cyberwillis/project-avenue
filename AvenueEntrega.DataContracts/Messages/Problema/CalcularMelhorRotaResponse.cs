@@ -1,8 +1,10 @@
-﻿namespace AvenueEntrega.DataContracts.Messages.Problema
+﻿using System.Collections.Generic;
+
+namespace AvenueEntrega.DataContracts.Messages.Problema
 {
     public class CalcularMelhorRotaResponse : ResponseBase
     {
         public string CustoTotal { get; set; }
-        public string MelhorCaminho { get; set; }
+        public IList<string> MelhorCaminho { get; set; }
     }
 }

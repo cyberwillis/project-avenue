@@ -40,9 +40,9 @@ namespace AvenueEntrega.Rules.UnitTest
         [Test]
         public void Test2_Lower_Route_From_A_To_D_Will_Pass()
         {
-            ProblemaService service = new ProblemaService(this._testMapa);
+            CalculoService service = new CalculoService(this._testMapa);
 
-            var path = service.GetBestPath("A", "D");
+            var path = service.FindBestPath("A", "D");
 
             var expectedPath = new List<string>() { "A", "B",  "D" };
 
@@ -60,13 +60,11 @@ namespace AvenueEntrega.Rules.UnitTest
         [Test]
         public void Test3_Lower_Cost_Route_From_A_To_D_Will_Pass()
         {
-            ProblemaService service = new ProblemaService(this._testMapa);
+            CalculoService service = new CalculoService(this._testMapa);
 
-            var state = service.ChiepestFirstSearch("Arad", "Bucharest");
+            var result = service.Process("A", "D",10, 2.50f);
 
-            var custo = service.GetCostForBestPath("A", "D",10, 2.50f);
-
-            Assert.IsTrue(custo == 6.25f);
+            Assert.IsTrue(result.CustoTotal == 6.25f);
         }
 
         [Test]
@@ -98,9 +96,9 @@ namespace AvenueEntrega.Rules.UnitTest
         [Test]
         public void Test5_Lower_Route_From_Arad_To_Bucharest_Will_Pass()
         {
-            ProblemaService service = new ProblemaService(this._romeniaMapa);
+            CalculoService service = new CalculoService(this._romeniaMapa);
 
-            var path = service.GetBestPath("Arad", "Bucharest");
+            var path = service.FindBestPath("Arad", "Bucharest");
 
             var expectedPath = new List<string>() { "Arad", "Sibiu", "Rimnicu Vilcea", "Pitesti", "Bucharest" };
 
@@ -118,7 +116,7 @@ namespace AvenueEntrega.Rules.UnitTest
         [Test]
         public void Test6_Lower_Cost_Route_From_Arad_To_Bucharest_Will_Pass()
         {
-            ProblemaService service = new ProblemaService(this._romeniaMapa);
+            CalculoService service = new CalculoService(this._romeniaMapa);
 
             var state = service.ChiepestFirstSearch("Arad", "Bucharest");
 

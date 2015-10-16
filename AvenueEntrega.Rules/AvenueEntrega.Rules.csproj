@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProblemaService.cs" />
+    <Compile Include="CalculoService.cs" />
     <Compile Include="MapaService.cs" />
+    <Compile Include="ProblemaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoCalculo.cs" />
     <Compile Include="RotaService.cs" />
     <Compile Include="Specification\ProblemaSpecification.cs" />
     <Compile Include="Specification\MapaSpecification.cs" />

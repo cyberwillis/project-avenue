@@ -1,6 +1,10 @@
-﻿using AvenueEntrega.DataContracts.Messages.Mapa;
+﻿using System;
+using AvenueEntrega.DataContracts.Messages.Mapa;
+using AvenueEntrega.DataContracts.Messages.Problema;
 using AvenueEntrega.Model.Repository;
+using AvenueEntrega.Rules;
 using AvenueEntrega.ServiceContracts;
+using AvenueEntrega.Services.ExtensionMethods;
 
 namespace AvenueEntrega.Services
 {
@@ -12,31 +16,211 @@ namespace AvenueEntrega.Services
         {
             _mapaRepository = mapaRepository;
         }
-
-
+        
         public EncontrarTodosMapasResponse EncontrarTodosMapas()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public ExcluirMapaResponse ExcluirMapa(ExcluirMapaRequest request)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public AlterarMapaResponse AlterarMapa(AlterarMapaRequest request)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public InserirMapaResponse InserirMapa(InserirMapaRequest request)
-        {
-            throw new System.NotImplementedException();
+            var response = new EncontrarTodosMapasResponse();
+            try
+            {
+                var mapas = _mapaRepository.FindAll();
+                if (mapas != null)
+                {
+                    response.Success = true;
+                    response.Message = string.Format("Encontrado(s) {0} mapas", mapas.Count);
+                    response.Mapas = mapas.ConvertToListMapasDto();
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Nenhum papa encontrado.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Erro: " + ex.Message;
+            }
+            return response;
         }
 
         public EncontrarMapaPorResponse EncontrarMapaPor(EncontrarMapaPorRequest request)
         {
-            throw new System.NotImplementedException();
+            var response = new EncontrarMapaPorResponse();
+            try
+            {
+                var id = request.Mapa.ConvertToMapa().Id;
+                var mapa = _mapaRepository.FindBy(id);
+                if (mapa != null)
+                {
+                    response.Success = true;
+                    response.Message = "Mapa encontrado.";
+                    response.Mapa = mapa.ConvertoToMapaDto();
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Mapa não encontrado.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Erro: " + ex.Message;
+            }
+            return response;
+        }
+
+        public InserirMapaResponse InserirMapa(InserirMapaRequest request)
+        {
+            var response = new InserirMapaResponse();
+            try
+            {
+                var mapa = request.Mapa.ConvertToMapa();
+                if (mapa.IsValid())
+                {
+                    //TODO: batch import, no to be defined in MVC!!!
+
+                    _mapaRepository.Save(mapa);
+                    _mapaRepository.Persist();
+
+                    response.Success = true;
+                    response.Message = "Inserido com sucesso.";
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Erro:" + mapa.GetErrorMessages();
+                    response.Rules = mapa.BrokenRules;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Erro: " + ex.Message;
+            }
+            return response;
+        }
+
+        public AlterarMapaResponse AlterarMapa(AlterarMapaRequest request)
+        {
+            var response = new AlterarMapaResponse();
+            try
+            {
+                var nome = request.Mapa.ConvertToMapa().NomeMapa;
+
+                var mapa = _mapaRepository.FindByName(nome);
+                if (mapa!= null)
+                {
+                    var novoMapa = request.Mapa.ConvertToMapa();
+
+                    if (novoMapa.IsValid())
+                    {
+                        _mapaRepository.Delete(mapa);
+
+                        _mapaRepository.Save(mapa);
+
+                        _mapaRepository.Persist();
+
+                        response.Success = true;
+                        response.Message = "Excluido com sucesso.";
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Erro: " + novoMapa.GetErrorMessages();
+                        response.Rules = novoMapa.BrokenRules;
+                    }
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Mapa não encontrado.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Erro: " + ex.Message;
+            }
+            return response;
+        }
+
+        public ExcluirMapaResponse ExcluirMapa(ExcluirMapaRequest request)
+        {
+            var response = new ExcluirMapaResponse();
+            try
+            {
+                var id = request.Mapa.ConvertToMapa().Id;
+
+                var mapa = _mapaRepository.FindBy(id);
+
+                if (mapa != null)
+                {
+                    _mapaRepository.Delete(mapa);
+                    _mapaRepository.Persist();
+
+                    response.Success = true;
+                    response.Message = "Excluido com sucesso.";
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Mapa não encontrada.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Erro: " + ex.Message;
+            }
+            return response;
+        }
+
+        public CalcularMelhorRotaResponse CalcularRota(CalcularMelhorRotaRequest request)
+        {
+            var response = new CalcularMelhorRotaResponse();
+            try
+            {
+                var problema = request.Problema.ConvertToProblema();
+                if (problema.IsValid())
+                {
+                    CalculoService servicoDeCalculo;
+                    
+                    var nomeMapa = problema.NomeMapa;
+                    var mapa = _mapaRepository.FindByName(nomeMapa);
+                    if (mapa != null)
+                    {
+                        servicoDeCalculo = new CalculoService(mapa);
+
+                        var result = servicoDeCalculo.Process(   problema.Origem,
+                                                                            problema.Destino,
+                                                                            problema.AutonomiaVeiculo,
+                                                                            problema.ValorCombustivel);
+
+                        response.Success = true;
+                        response.Message = "Operação executada com sucesso.";
+                        response.CustoTotal = result.CustoTotal.ToString();
+                        response.MelhorCaminho = result.MelhorCaminho;
+                    }
+                    else
+                    {
+                        response.Success = false;
+                        response.Message = "Mapa não encontrado.";
+                    }
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = "Erro:" + problema.GetErrorMessages();
+                    response.Rules = problema.BrokenRules;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = "Erro: " + ex.Message;
+            }
+            return response;
         }
     }
 }
