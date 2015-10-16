@@ -4,13 +4,13 @@ using AvenueEntrega.Model.Entities;
 
 namespace AvenueEntrega.Rules
 {
-    public class DomainServices
+    public class ProblemaService
     {
         private Mapa _mapa;
-
+        
         private IList<Rota> _rotas;
 
-        public DomainServices(Mapa mapa)
+        public ProblemaService(Mapa mapa)
         {
             this._mapa = mapa;
 
