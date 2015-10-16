@@ -1,6 +1,6 @@
 ﻿using System.Web;
 
-namespace AvenueEntrega.RepositoryMongoDB.SessionStorage
+namespace AvenueEntrega.RepositoryNHibernate.SessionStorage
 {
     public class SessionStorageFactory
     {

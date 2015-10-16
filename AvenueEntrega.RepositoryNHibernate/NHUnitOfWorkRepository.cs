@@ -3,7 +3,7 @@ using AvenueEntrega.Model;
 using AvenueEntrega.Model.Repository;
 using NHibernate;
 
-namespace AvenueEntrega.RepositoryMongoDB
+namespace AvenueEntrega.RepositoryNHibernate
 {
     public class NHUnitOfWorkRepository<TEntity> : IUnitOfWorkRepository<TEntity> where TEntity : IAggregateRoot
     {

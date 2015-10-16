@@ -4,7 +4,7 @@ using AvenueEntrega.Model;
 using AvenueEntrega.Model.Repository;
 using NHibernate.Linq;
 
-namespace AvenueEntrega.RepositoryMongoDB.Repositories
+namespace AvenueEntrega.RepositoryNHibernate.Repositories
 {
     public class RepositoryBase<TEntity,TId> : IRepository<TEntity,TId> where TEntity : IAggregateRoot
     {

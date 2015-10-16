@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using AvenueEntrega.Model.Entities;
 using AvenueEntrega.Model.Repository;
 
-namespace AvenueEntrega.RepositoryMongoDB.Repositories
+namespace AvenueEntrega.RepositoryNHibernate.Repositories
 {
-    public class MapaRepository : RepositoryBase<Mapa,Guid>
+    public class MapaRepository : RepositoryBase<Mapa,Guid>, IMapaRepository
     {
         public MapaRepository(IUnitOfWork<Mapa> unitOfWork) : base(unitOfWork)
         {

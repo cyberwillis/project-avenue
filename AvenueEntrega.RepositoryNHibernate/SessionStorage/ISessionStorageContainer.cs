@@ -1,6 +1,6 @@
 ﻿using NHibernate;
 
-namespace AvenueEntrega.RepositoryMongoDB.SessionStorage
+namespace AvenueEntrega.RepositoryNHibernate.SessionStorage
 {
     public interface ISessionStorageContainer
     {

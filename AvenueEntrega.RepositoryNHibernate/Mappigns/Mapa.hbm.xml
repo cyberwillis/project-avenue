@@ -1,10 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Cadastro.DomainModel" namespace="Cadastro.DomainModel">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AvenueEntrega.Model" namespace="AvenueEntrega.Model.Entities">
   <class name="Mapa" table="tbAvenueEntregaMapas" lazy="false">
     <id name="Id" column="Id">
       <generator class="guid"/>
     </id>
 
     <property name="NomeMapa"/>
+
+    <bag name="Rotas" table="tbAvenueEntregaRotas" lazy="false" cascade="all">
+      <key column="MapaId"/>
+      <one-to-many class="AvenueEntrega.Model.Entities.Rota"/>
+    </bag>
   </class>
 </hibernate-mapping>

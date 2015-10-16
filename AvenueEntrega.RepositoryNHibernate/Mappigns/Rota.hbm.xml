@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="Cadastro.DomainModel" namespace="Cadastro.DomainModel">
-  <class name="Mapa" table="tbAvenueEntregaRotas" lazy="false">
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="AvenueEntrega.Model" namespace="AvenueEntrega.Model.Entities">
+  <class name="Rota" table="tbAvenueEntregaRotas" lazy="false">
     <id name="Id" column="Id">
       <generator class="guid"/>
     </id>

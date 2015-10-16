@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Reflection;
-using AvenueEntrega.RepositoryMongoDB.SessionStorage;
+using AvenueEntrega.RepositoryNHibernate.SessionStorage;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Connection;
 using NHibernate.Dialect;
+using NHibernate.Driver;
 
-namespace AvenueEntrega.RepositoryMongoDB
+namespace AvenueEntrega.RepositoryNHibernate
 {
     public class SessionFactory
     {
@@ -29,26 +31,25 @@ namespace AvenueEntrega.RepositoryMongoDB
 
         private static Configuration GetConfiguration(SchemaAutoAction automation)
         {
+            //var dbLocation = AppDomain.CurrentDomain.BaseDirectory;
+
             var config = new Configuration();
             config.DataBaseIntegration(x =>
             {
                 x.Dialect<MsSql2012Dialect>();
                 x.SchemaAction = automation;
 
-                //x.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Cadastro.mdf;Initial Catalog=Cadastro;Integrated Security=True";
-                //x.ConnectionString = "Data Source=192.168.1.65;Initial Catalog=Cadastro;Integrated Security=False;uid=cadastro;pwd=cadastro";
-                //x.ConnectionString = "";
-                //x.ConnectionStringName = "TesteConnection";
+                //x.ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=" + dbLocation + "\\AvenueEntrega.mdf;Initial Catalog=AvenueEntrega;Integrated Security=True";
+                x.ConnectionStringName = "DefaultConnection";
+                x.Driver<SqlClientDriver>();
+                x.ConnectionProvider<DriverConnectionProvider>();
 
-                //x.Driver<SqlClientDriver>();
-                //x.ConnectionProvider<DriverConnectionProvider>();
-
-                //x.LogFormattedSql = true;
-                //x.LogSqlInConsole = true;
+                x.LogFormattedSql = true;
+                x.LogSqlInConsole = true;
             });
 
             config.AddAssembly(Assembly.GetExecutingAssembly());
-            config.Configure();
+            //config.Configure();
             return config;
         }
 

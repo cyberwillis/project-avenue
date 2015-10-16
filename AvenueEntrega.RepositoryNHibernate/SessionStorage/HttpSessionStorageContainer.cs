@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using NHibernate;
 
-namespace AvenueEntrega.RepositoryMongoDB.SessionStorage
+namespace AvenueEntrega.RepositoryNHibernate.SessionStorage
 {
     public class HttpSessionStorageContainer : ISessionStorageContainer
     {

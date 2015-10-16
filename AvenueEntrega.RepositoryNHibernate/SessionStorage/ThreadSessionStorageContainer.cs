@@ -2,7 +2,7 @@
 using System.Threading;
 using NHibernate;
 
-namespace AvenueEntrega.RepositoryMongoDB.SessionStorage
+namespace AvenueEntrega.RepositoryNHibernate.SessionStorage
 {
     public class ThreadSessionStorageContainer : ISessionStorageContainer
     {

@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AvenueEntrega.RepositoryNHibernate")]
+[assembly: AssemblyTitle("AvenueEntrega.RepositoryNHIbernate.IntegratedTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AvenueEntrega.RepositoryNHibernate")]
+[assembly: AssemblyProduct("AvenueEntrega.RepositoryNHIbernate.IntegratedTest")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8e4fa622-140d-4e02-aec9-8b16c47df389")]
+[assembly: Guid("13bd1e17-1f4e-4d61-8740-f8cb39552aa0")]
 
 // Version information for an assembly consists of the following four values:
 //
