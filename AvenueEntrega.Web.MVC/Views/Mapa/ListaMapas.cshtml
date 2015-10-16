@@ -1,0 +1,9 @@
+﻿@model IEnumerable<AvenueEntrega.Web.MVC.Models.MapaViewModel>
+
+<h2>@ViewBag.Title</h2>
+
+<div id="conteudoMapa">
+    @{ Html.RenderPartial("ListaMapasPartialView", Model);}
+</div>
+
+

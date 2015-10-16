@@ -26,6 +26,21 @@ namespace AvenueEntrega.Web.MVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/avenueentregas").Include(
+                    "~/Scripts/avenueentregas.js" ));
+
+
+            //Bootstrap-select
+            //https://github.com/silviomoreto/bootstrap-select
+            bundles.Add(new ScriptBundle("~/bundles/selectjs").Include(
+                    //"~/Scripts/moment.js",
+                    "~/Content/bootstrap-select/js/bootstrap-select.js"
+                ));
+
+            bundles.Add(new StyleBundle("~/Content/selectcss").Include(
+                    "~/Content/bootstrap-select/dist/css/bootstrap-select.min.css"
+                ));
         }
     }
 }
