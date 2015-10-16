@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionMethods\MapaExtensions.cs" />
+    <Compile Include="ExtensionMethods\ProblemaExtensions.cs" />
+    <Compile Include="ExtensionMethods\RotaExtensions.cs" />
     <Compile Include="MapaServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,6 +54,14 @@
     <ProjectReference Include="..\AvenueEntrega.Model\AvenueEntrega.Model.csproj">
       <Project>{372eb104-48f2-48c3-9585-ffdba6e1c641}</Project>
       <Name>AvenueEntrega.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.RepositoryNHibernate\AvenueEntrega.RepositoryNHibernate.csproj">
+      <Project>{8e4fa622-140d-4e02-aec9-8b16c47df389}</Project>
+      <Name>AvenueEntrega.RepositoryNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.Rules\AvenueEntrega.Rules.csproj">
+      <Project>{e5d41d1b-b9f5-4e64-9351-2dc18759a4a8}</Project>
+      <Name>AvenueEntrega.Rules</Name>
     </ProjectReference>
     <ProjectReference Include="..\AvenueEntrega.ServiceContracts\AvenueEntrega.ServiceContracts.csproj">
       <Project>{BC88E90E-3054-4E0C-B5E1-DF337BC22231}</Project>
