@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AvenueEntrega.Model;
 using AvenueEntrega.Model.Repository;
+using NHibernate.Linq;
 
 namespace AvenueEntrega.RepositoryMongoDB.Repositories
 {
@@ -15,32 +17,32 @@ namespace AvenueEntrega.RepositoryMongoDB.Repositories
 
         public IList<TEntity> FindAll()
         {
-            throw new System.NotImplementedException();
+            return SessionFactory.GetCurrentSession().Query<TEntity>().ToList();
         }
 
         public TEntity FindBy(TId id)
         {
-            throw new System.NotImplementedException();
+            return SessionFactory.GetCurrentSession().Get<TEntity>(id);
         }
 
         public void Save(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            this._unitOfWork.Save(entity);
         }
 
         public void Update(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            this._unitOfWork.Update(entity);
         }
 
         public void Delete(TEntity entity)
         {
-            throw new System.NotImplementedException();
+            this._unitOfWork.Remove(entity);
         }
 
         public void Persist()
         {
-            throw new System.NotImplementedException();
+            this._unitOfWork.Commit();
         }
     }
 }
