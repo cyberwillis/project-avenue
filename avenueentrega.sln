@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.RepositoryMon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.RepositoryNHibernate", "AvenueEntrega.RepositoryNHibernate\AvenueEntrega.RepositoryNHibernate.csproj", "{8E4FA622-140D-4E02-AEC9-8B16C47DF389}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.ServiceContracts", "AvenueEntrega.ServiceContracts\AvenueEntrega.ServiceContracts.csproj", "{BC88E90E-3054-4E0C-B5E1-DF337BC22231}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{8E4FA622-140D-4E02-AEC9-8B16C47DF389}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E4FA622-140D-4E02-AEC9-8B16C47DF389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E4FA622-140D-4E02-AEC9-8B16C47DF389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC88E90E-3054-4E0C-B5E1-DF337BC22231}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC88E90E-3054-4E0C-B5E1-DF337BC22231}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC88E90E-3054-4E0C-B5E1-DF337BC22231}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC88E90E-3054-4E0C-B5E1-DF337BC22231}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,5 +97,6 @@ Global
 		{E8F70F2E-D67A-49AD-A361-D41718699733} = {C6279A88-5541-4DD9-BFB9-38C5DFEA2235}
 		{182412B7-01B6-4D40-BCCD-055ADB3F28F4} = {C6279A88-5541-4DD9-BFB9-38C5DFEA2235}
 		{8E4FA622-140D-4E02-AEC9-8B16C47DF389} = {C6279A88-5541-4DD9-BFB9-38C5DFEA2235}
+		{BC88E90E-3054-4E0C-B5E1-DF337BC22231} = {0BB504AF-3F86-4D49-BEF3-B98F6C871DA0}
 	EndGlobalSection
 EndGlobal

@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AvenueEntrega.Services</RootNamespace>
     <AssemblyName>AvenueEntrega.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,13 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MalhaServices.cs" />
+    <Compile Include="MapaServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AvenueEntrega.DataContracts\AvenueEntrega.DataContracts.csproj">
+      <Project>{064ca8a7-26fe-4275-a0b8-f7fd2b7bc6cb}</Project>
+      <Name>AvenueEntrega.DataContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AvenueEntrega.Model\AvenueEntrega.Model.csproj">
-      <Project>{372EB104-48F2-48C3-9585-FFDBA6E1C641}</Project>
+      <Project>{372eb104-48f2-48c3-9585-ffdba6e1c641}</Project>
       <Name>AvenueEntrega.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.ServiceContracts\AvenueEntrega.ServiceContracts.csproj">
+      <Project>{BC88E90E-3054-4E0C-B5E1-DF337BC22231}</Project>
+      <Name>AvenueEntrega.ServiceContracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
