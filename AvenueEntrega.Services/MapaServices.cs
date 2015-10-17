@@ -93,8 +93,15 @@ namespace AvenueEntrega.Services
                 var mapa = request.Mapa.ConvertToMapa();
                 if (mapa.IsValid())
                 {
-                    //TODO: batch import, no to be defined in MVC!!!
+                    //removes the old
+                    var oldMapa = _mapaRepository.FindByName(mapa.NomeMapa);
+                    if (oldMapa != null)
+                    {
+                        _mapaRepository.Delete(oldMapa);
+                        _mapaRepository.Persist();
+                    }
 
+                    //persist the new
                     _mapaRepository.Save(mapa);
                     _mapaRepository.Persist();
 
@@ -200,17 +207,27 @@ namespace AvenueEntrega.Services
                 if (problema.IsValid())
                 {
                     CalculoService servicoDeCalculo;
+                    Mapa mapa = null;
+
+                    if (!string.IsNullOrEmpty(problema.Id))
+                    {
+                        var id = Guid.Parse(problema.Id);
+                        mapa = _mapaRepository.FindBy(id);
+                    }
+                    else if(!string.IsNullOrEmpty(problema.NomeMapa))
+                    {
+                        var nomeMapa = problema.NomeMapa;
+                        mapa = _mapaRepository.FindByName(nomeMapa);
+                    }
                     
-                    var nomeMapa = problema.NomeMapa;
-                    var mapa = _mapaRepository.FindByName(nomeMapa);
                     if (mapa != null)
                     {
                         servicoDeCalculo = new CalculoService(mapa);
 
-                        var result = servicoDeCalculo.Process(   problema.Origem,
-                                                                            problema.Destino,
-                                                                            problema.AutonomiaVeiculo,
-                                                                            problema.ValorCombustivel);
+                        var result = servicoDeCalculo.Process(  problema.Origem,
+                                                                problema.Destino,
+                                                                problema.AutonomiaVeiculo,
+                                                                problema.ValorCombustivel);
 
                         response.Success = true;
                         response.Message = "Operação executada com sucesso.";
