@@ -167,9 +167,6 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MapaController.cs" />
     <Compile Include="ExtensionMethods\MapaViewModelExtensions.cs" />
     <Compile Include="ExtensionMethods\RotaViewModelExtensions.cs" />
@@ -177,11 +174,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CadastrarMapaViewModel.cs" />
     <Compile Include="Models\CalculoCustoViewModel.cs" />
+    <Compile Include="Models\ExcluirMapaViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ListaMapaViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MapaViewModel.cs" />
+    <Compile Include="Models\ResultadoCustoViewModel.cs" />
     <Compile Include="Models\RotaDestinoViewModel.cs" />
     <Compile Include="Models\RotaOrigemViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -244,8 +244,14 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Mapa\ListaMapas.cshtml" />
-    <Content Include="Views\Mapa\CalcularCusto.cshtml" />
+    <Content Include="Views\Mapa\CalcularCustoPartialView.cshtml" />
     <Content Include="Views\Mapa\ListaMapasPartialView.cshtml" />
+    <Content Include="Views\Shared\Sucesso.cshtml" />
+    <Content Include="Views\Mapa\ResultadoCustoPartialView.cshtml" />
+    <Content Include="Views\Mapa\CadastrarMapaPartialView.cshtml" />
+    <Content Include="Views\Mapa\ExcluirMapaPartialView.cshtml" />
+    <Content Include="Views\Mapa\SucessoPartialView.cshtml" />
+    <Content Include="Views\Mapa\ErrorPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,9 +273,17 @@
       <Project>{372EB104-48F2-48C3-9585-FFDBA6E1C641}</Project>
       <Name>AvenueEntrega.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.RepositoryFile\AvenueEntrega.RepositoryFile.csproj">
+      <Project>{e8f70f2e-d67a-49ad-a361-d41718699733}</Project>
+      <Name>AvenueEntrega.RepositoryFile</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AvenueEntrega.RepositoryNHibernate\AvenueEntrega.RepositoryNHibernate.csproj">
       <Project>{8e4fa622-140d-4e02-aec9-8b16c47df389}</Project>
       <Name>AvenueEntrega.RepositoryNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.Service.ETL\AvenueEntrega.Service.ETL.csproj">
+      <Project>{65F7206B-427D-4644-A5CC-344085B2CFAC}</Project>
+      <Name>AvenueEntrega.Service.ETL</Name>
     </ProjectReference>
     <ProjectReference Include="..\AvenueEntrega.ServiceContracts\AvenueEntrega.ServiceContracts.csproj">
       <Project>{bc88e90e-3054-4e0c-b5e1-df337bc22231}</Project>

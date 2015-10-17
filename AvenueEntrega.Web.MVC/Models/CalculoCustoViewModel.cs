@@ -6,20 +6,26 @@ namespace AvenueEntrega.Web.MVC.Models
 {
     public class CalculoCustoViewModel
     {
-        [Display(Name = "Origem")]
-        public IList<RotaOrigemViewModel> Origens { get; set; }
-        public string Origem { get; set; }
+        public string Id { get; set; }
+        [Display(Name = "Nome do Mapa")]
+        public string NomeMapa { get; set; }
 
+        [Display(Name = "Origem")]
+        public string Origem { get; set; }
+        
         [Display(Name = "Destino")]
-        public IList<RotaDestinoViewModel> Destinos { get; set; }
         public string Destino { get; set; }
 
         [Display(Name = "Autonomia do Veículo (0.00)")]
-        public string Autonomia { get; set; }
+        public string AutonomiaVeiculo { get; set; }
 
         [Display(Name = "Valor do Combustível (0.00)")]
         public string ValorCombustivel { get; set; }
 
+        public IList<RotaOrigemViewModel> Origens { get; set; }
+        public IList<RotaDestinoViewModel> Destinos { get; set; }
+
+        #region Helper Methods
         public SelectList GetOrigensSelectList()
         {
             var list = new List<RotaOrigemViewModel>();
@@ -45,5 +51,6 @@ namespace AvenueEntrega.Web.MVC.Models
 
             return new SelectList(list, "Destino", "Destino");
         }
+        #endregion
     }
 }

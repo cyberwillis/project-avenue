@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using AvenueEntrega.DataContracts.Dto;
 using AvenueEntrega.Web.MVC.Models;
 
@@ -6,18 +7,8 @@ namespace AvenueEntrega.Web.MVC.ExtensionMethods
 {
     public static class RotaViewModelExtensions
     {
-        //public static RotaDestinoViewModel ConvertToRotaDestinoViewModel(this RotaDto rotaDto)
-        //{
-        //    var rotaDestino = new RotaDestinoViewModel();
-        //    rotaDestino.Destino = rotaDto.Destino;
-
-        //    return rotaDestino;
-        //}
-
         public static IList<RotaDestinoViewModel> ConvertToListRotaDestinoViewMode(this IList<RotaDto> rotasDto)
         {
-            var rotasDestino = new List<RotaDestinoViewModel>();
-
             var dict = new Dictionary<string, string>();
             foreach (var rotaDto in rotasDto)
             {
@@ -25,31 +16,28 @@ namespace AvenueEntrega.Web.MVC.ExtensionMethods
                     dict.Add(rotaDto.Destino, "");
             }
 
-            foreach (var item in dict)
-            {
-                rotasDestino.Add(new RotaDestinoViewModel() {Destino = item.Key});
-            }
+            var rotasDestino = dict.Select(item => new RotaDestinoViewModel() {Destino = item.Key}).ToList();
 
-            return rotasDestino;
+            var sortedDestino = rotasDestino.OrderBy(o => o.Destino).ToList();
+
+            return sortedDestino;
         }
 
         public static IList<RotaOrigemViewModel> ConvertToListRotaOrigemViewMode(this IList<RotaDto> rotasDto)
         {
-            var rotasOrigem = new List<RotaOrigemViewModel>();
-
             var dict = new Dictionary<string, string>();
+
             foreach (var rotaDto in rotasDto)
             {
                 if (!dict.ContainsKey(rotaDto.Origem))
                     dict.Add(rotaDto.Origem, "");
             }
 
-            foreach (var item in dict)
-            {
-                rotasOrigem.Add(new RotaOrigemViewModel() { Origem = item.Key });
-            }
+            var rotasOrigem = dict.Select(item => new RotaOrigemViewModel() {Origem = item.Key}).ToList();
 
-            return rotasOrigem;
+            var sortedOrigem = rotasOrigem.OrderBy(o => o.Origem).ToList();
+
+            return sortedOrigem;
         }
     }
 }
