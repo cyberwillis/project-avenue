@@ -9,7 +9,7 @@ namespace AvenueEntrega.Rules.Specification
         {
             problema.ClearBrokenRules();
 
-            if(string.IsNullOrEmpty(problema.NomeMapa))
+            if(string.IsNullOrEmpty(problema.NomeMapa) && string.IsNullOrEmpty(problema.Id))
                 problema.BrokenRules.Add("NomeMapa", "Um mapa deve ser especificado.");
 
             if(string.IsNullOrEmpty(problema.Origem))
