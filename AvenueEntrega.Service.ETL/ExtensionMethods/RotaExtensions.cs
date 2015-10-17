@@ -11,7 +11,9 @@ namespace AvenueEntrega.Service.ETL.ExtensionMethods
         public static RotaRepositoryDto ConvertToRotaDto( this Rota rota)
         {
             var rotaDto = new RotaRepositoryDto();
+
             //rotaDto.Id = rota.Id.ToString();
+
             rotaDto.Origem = rota.Origem;
             rotaDto.Destino = rota.Destino;
             rotaDto.Custo = rota.Custo;
@@ -31,8 +33,8 @@ namespace AvenueEntrega.Service.ETL.ExtensionMethods
         {
             var rota = new Rota();
             //if(!string.IsNullOrEmpty(rotaDto.Id))
+            //rota.Id = Guid.NewGuid();
 
-            rota.Id = Guid.NewGuid();
             rota.Origem = rotaDto.Origem;
             rota.Destino = rotaDto.Destino;
             rota.Custo = rotaDto.Custo;
