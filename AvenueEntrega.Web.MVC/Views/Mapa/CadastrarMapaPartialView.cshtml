@@ -1,0 +1,148 @@
+﻿@model AvenueEntrega.Web.MVC.Models.CadastrarMapaViewModel
+
+<div class="modal-dialog">
+<div class="modal-content">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h3 id="myModalLabel" class="modal-title">&nbsp;@ViewBag.Title</h3>
+    </div>
+    @if (!string.IsNullOrEmpty(ViewBag.MessageType))
+    {
+    <div class="alert @ViewBag.MessageType fade in">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <small>@Html.Raw(ViewBag.Message)</small>
+    </div>
+    }
+
+    <div id="myModalBody" class="modal-body">
+        <div id="conteudo-modal">
+
+            @using (Ajax.BeginForm("Create", "file", new AjaxOptions { HttpMethod = "post" , InsertionMode = InsertionMode.Replace, UpdateTargetId = "myModal" }, new {enctype = "multipart/form-data"}))
+            {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NomeMapa, htmlAttributes: new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.NomeMapa, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.NomeMapa, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.File, htmlAttributes: new {@class = "control-label col-md-3"})
+                    <div class="col-md-6">
+                        <input type="file" name="UploadFile" id="txtUploadFile" class="makethispretty"/>
+                        @Html.ValidationMessageFor(model => model.File, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+                
+                <!--<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>-->
+            </div>
+            }
+
+        </div>
+    </div>
+    <div class="modal-footer form-horizontal">
+        <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+         <a id="calcularCusto" onclick="ajaxFormSubmitFileUpload(this)" href="#" role="button" class="btn btn-sm btn-success">Cadastrar</a> 
+    </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+<script>
+
+    //$('#txtUploadFile').on('change', function(e) {
+    //    alert(e.target.name)
+        //for (var i in e.target.name) {
+         //   alert(i)
+        //}
+        //var files = e.target.files;
+    //});
+
+    /*
+ Methodo responsavel por fazer o submit de arquivo
+ */
+    //$('#txtUploadFile').on('change', function (e) {
+
+    //    var files = e.target.files;
+
+    //    //var myID = 3; //uncomment this to make sure the ajax URL works
+    //    if (files.length > 0) {
+    //        if (window.FormData !== undefined) {
+    //            var data = new FormData();
+    //            for (var x = 0; x < files.length; x++) {
+    //                data.append("file" + x, files[x]);
+    //            }
+
+    //            var $form = $('#form0');
+
+    //            var options = {
+    //                url: $form.attr("action") + '?t=' + gettick(),
+    //                type: $form.attr("method"),
+    //                //data: $form.serialize(),
+    //                //type: "POST",
+    //                //url: '/Mapa/UploadFile' + '?t=' + gettick(), //url: '/Mapa/Create?id=' + myID,
+    //                contentType: false,
+    //                processData: false,
+    //                data: data,
+    //                success: function(result) {
+    //                    console.log(result);
+    //                },
+    //                error: function (xhr, status, p3, p4) {
+    //                    var err = "Error " + " " + status + " " + p3 + " " + p4;
+    //                    if (xhr.responseText && xhr.responseText[0] == "{")
+    //                        err = JSON.parse(xhr.responseText).Message;
+    //                    console.log(err);
+    //                }
+    //            };
+
+    //            $.ajax(options).done(function(data) {
+    //                var $target = $($form.attr("data-ajax-update"));
+    //                $target.html(data);
+    //            });
+    //        } else {
+    //            alert("Este navegador nao suporta uploads em HTML5!");
+    //        }
+    //    }
+    //});
+
+
+    function ajaxFormSubmitFileUpload(targetAfterClose) {
+
+        var data = new FormData();
+        var files = $('UploadFile').context.forms.form0.elements.UploadFile.files;
+        var nomeMapa = $('NomeMapa').context.forms.form0.NomeMapa;
+
+        //data.append("file0", files[0]);
+        for (var x = 0; x < files.length; x++) {
+            data.append("file" + x, files[x]);
+        }
+        data.append('NomeMapa', nomeMapa.value);
+        
+        var $form = $('#form0');
+
+        var options = {
+            url: $form.attr("action") + '?t=' + gettick(),
+            type: $form.attr("method"),
+            contentType: false,
+            processData: false,
+            data: data
+        };
+
+        $.ajax(options).done(function (data) {
+            var $target = $($form.attr("data-ajax-update"));
+            $target.html(data);
+        });
+    };
+</script>
