@@ -48,6 +48,13 @@ namespace AvenueEntrega.Rules
             return result;
         }
 
+        /// <summary>
+        /// This method is use, just to make de calculation
+        /// </summary>
+        /// <param name="custoDeslocamento"></param>
+        /// <param name="autonomiaDoVeiculo"></param>
+        /// <param name="valorDoLitroDeCombustivel"></param>
+        /// <returns></returns>
         private decimal CalculateBestCost(decimal custoDeslocamento, decimal autonomiaDoVeiculo, decimal valorDoLitroDeCombustivel)
         {
             return (custoDeslocamento / autonomiaDoVeiculo) * valorDoLitroDeCombustivel;
