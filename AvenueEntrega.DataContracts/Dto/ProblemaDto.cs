@@ -2,6 +2,7 @@
 {
     public class ProblemaDto
     {
+        public string Id { get; set; }
         public string NomeMapa { get; set; }
         public string Origem { get; set; }
         public string Destino { get; set; }
