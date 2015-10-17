@@ -10,7 +10,11 @@ namespace AvenueEntrega.Services.ExtensionMethods
         public static ProblemaDto ConvertToProblemaDto(this Problema problema)
         {
             var problemaDto = new ProblemaDto();
+
+            //Both used to find the map
+            problemaDto.Id = problema.Id;
             problemaDto.NomeMapa = problema.NomeMapa;
+
             problemaDto.Origem = problema.Origem;
             problemaDto.Destino = problema.Destino;
             problemaDto.AutonomiaVeiculo = problema.AutonomiaVeiculo.ToString();
@@ -29,7 +33,11 @@ namespace AvenueEntrega.Services.ExtensionMethods
         public static Problema ConvertToProblema(this ProblemaDto problemaDto)
         {
             var problema = new Problema();
+
+            //Both used to find the map
+            problema.Id = problemaDto.Id;
             problema.NomeMapa = problemaDto.NomeMapa;
+
             problema.Origem = problemaDto.Origem;
             problema.Destino = problemaDto.Destino;
             problema.AutonomiaVeiculo = decimal.Parse(problemaDto.AutonomiaVeiculo);
