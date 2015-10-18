@@ -4,9 +4,9 @@ namespace AvenueEntrega.Rules
 {
     public class State
     {
-        public string Name { get; }
-        public decimal Cost { get; }
-        public State Parent { get; }
+        public string Name { get; private set; }
+        public decimal Cost { get; private set; }
+        public State Parent { get; private set; }
         public State(string name, State parent, decimal cost)
         {
             Name = name;
