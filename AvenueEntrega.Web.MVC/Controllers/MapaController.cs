@@ -189,17 +189,29 @@ namespace AvenueEntrega.Web.MVC.Controllers
             else
             {
                 ViewBag.Title = Resources.MapaController_HttpPost_Action_CalcularCusto_ViewBag_Title;//"Calculadora de Rota e Custo:";
-                ViewBag.MessageType = "alert-warning";
-                ViewBag.Message = response.Message;
+                
 
                 response.Rules.ForEach(x => ModelState.AddModelError(x.Key, x.Value));
                 var requestMapa = new EncontrarMapaPorRequest() { Mapa = new MapaDto() { Id = model.Id, NomeMapa = model.NomeMapa} };
                 var responseMapa = _mapaServices.EncontrarMapaPor(requestMapa);
-                var origens = responseMapa.Mapa.Rotas.ConvertToListRotaOrigemViewMode();
-                var destinos = responseMapa.Mapa.Rotas.ConvertToListRotaDestinoViewMode();
-                model.Destinos = destinos;
-                model.Origens = origens;
-                return PartialView("CalcularCustoPartialView", model);
+                if (responseMapa.Success)
+                {
+                    ViewBag.MessageType = "alert-warning";
+                    ViewBag.Message = response.Message;
+
+                    var origens = responseMapa.Mapa.Rotas.ConvertToListRotaOrigemViewMode();
+                    var destinos = responseMapa.Mapa.Rotas.ConvertToListRotaDestinoViewMode();
+                    model.Destinos = destinos;
+                    model.Origens = origens;
+                    return PartialView("CalcularCustoPartialView", model);
+                }
+                else
+                {
+                    ViewBag.MessageType = "alert-danger";
+                    ViewBag.Message = response.Message;
+
+                    return PartialView("SucessoPartialView");
+                }
             }
         }
 
