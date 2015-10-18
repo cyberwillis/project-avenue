@@ -1,6 +1,7 @@
 ﻿using System;
 using AvenueEntrega.DataContracts.Messages.Mapa;
 using AvenueEntrega.DataContracts.Messages.Problema;
+using AvenueEntrega.I18N;
 using AvenueEntrega.Model.Entities;
 using AvenueEntrega.Model.Repository;
 using AvenueEntrega.Rules;
@@ -27,19 +28,19 @@ namespace AvenueEntrega.Services
                 if (mapas != null)
                 {
                     response.Success = true;
-                    response.Message = string.Format("Encontrado(s) {0} mapas", mapas.Count);
+                    response.Message = string.Format(@Resources.MapaServices_EncontrarTodosMapas_Success_Message, mapas.Count);
                     response.Mapas = mapas.ConvertToListMapasDto();
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Nenhum papa encontrado.";
+                    response.Message = Resources.MapaServices_EncontrarTodosMapas_Failed_Message;
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Erro: " + ex.Message;
+                response.Message = Resources.MapaServices_EncontrarTodosMapas_Error_Message + ex.Message;
             }
             return response;
         }
@@ -68,19 +69,19 @@ namespace AvenueEntrega.Services
                 if (mapa != null)
                 {
                     response.Success = true;
-                    response.Message = "Mapa encontrado.";
+                    response.Message = Resources.MapaServices_EncontrarMapaPor_Success_Message;
                     response.Mapa = mapa.ConvertoToMapaDto();
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Mapa não encontrado.";
+                    response.Message = Resources.MapaServices_EncontrarMapaPor_Fail_Message;
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Erro: " + ex.Message;
+                response.Message = Resources.MapaServices_EncontrarMapaPor_Error_Message + ex.Message;
             }
             return response;
         }
@@ -106,19 +107,19 @@ namespace AvenueEntrega.Services
                     _mapaRepository.Persist();
 
                     response.Success = true;
-                    response.Message = "Inserido com sucesso.";
+                    response.Message = Resources.MapaServices_InserirMapa_Success_Message;
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Erro:" + mapa.GetErrorMessages();
+                    response.Message = Resources.MapaServices_InserirMapa_Fail_Message + mapa.GetErrorMessages();
                     response.Rules = mapa.BrokenRules;
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Erro: " + ex.Message;
+                response.Message = Resources.MapaServices_InserirMapa_Error_Message + ex.Message;
             }
             return response;
         }
@@ -144,25 +145,25 @@ namespace AvenueEntrega.Services
                         _mapaRepository.Persist();
 
                         response.Success = true;
-                        response.Message = "Excluido com sucesso.";
+                        response.Message = Resources.MapaServices_AlterarMapa_Success_Message;
                     }
                     else
                     {
                         response.Success = false;
-                        response.Message = "Erro: " + novoMapa.GetErrorMessages();
+                        response.Message = Resources.MapaServices_AlterarMapa_Fail_Message + novoMapa.GetErrorMessages();
                         response.Rules = novoMapa.BrokenRules;
                     }
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Mapa não encontrado.";
+                    response.Message = Resources.MapaServices_AlterarMapa_Fail2_Message;
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Erro: " + ex.Message;
+                response.Message = Resources.MapaServices_AlterarMapa_Error_Message + ex.Message;
             }
             return response;
         }
@@ -182,18 +183,18 @@ namespace AvenueEntrega.Services
                     _mapaRepository.Persist();
 
                     response.Success = true;
-                    response.Message = "Excluido com sucesso.";
+                    response.Message = Resources.MapaServices_ExcluirMapa_Success_Message;
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Mapa não encontrada.";
+                    response.Message = Resources.MapaServices_ExcluirMapa_Fail_Message;
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Erro: " + ex.Message;
+                response.Message = Resources.MapaServices_ExcluirMapa_Error_Message + ex.Message;
             }
             return response;
         }
@@ -230,27 +231,27 @@ namespace AvenueEntrega.Services
                                                                 problema.ValorCombustivel);
 
                         response.Success = true;
-                        response.Message = "Operação executada com sucesso.";
+                        response.Message = Resources.MapaServices_CalcularRota_Success_Message;
                         response.CustoTotal = result.CustoTotal.ToString();
                         response.MelhorCaminho = result.MelhorCaminho;
                     }
                     else
                     {
                         response.Success = false;
-                        response.Message = "Mapa não encontrado.";
+                        response.Message = Resources.MapaServices_CalcularRota_Fail_Message;
                     }
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Erro:" + problema.GetErrorMessages();
+                    response.Message = Resources.MapaServices_CalcularRota_Fail2_Message + problema.GetErrorMessages();
                     response.Rules = problema.BrokenRules;
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Erro: " + ex.Message;
+                response.Message = Resources.MapaServices_CalcularRota_Error_Message + ex.Message;
             }
             return response;
         }

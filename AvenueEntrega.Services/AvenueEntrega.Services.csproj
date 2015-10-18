@@ -51,6 +51,10 @@
       <Project>{064ca8a7-26fe-4275-a0b8-f7fd2b7bc6cb}</Project>
       <Name>AvenueEntrega.DataContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.I18N\AvenueEntrega.I18N.csproj">
+      <Project>{497E5EEA-8DAA-452B-A9A6-A4766898FE0B}</Project>
+      <Name>AvenueEntrega.I18N</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AvenueEntrega.Model\AvenueEntrega.Model.csproj">
       <Project>{372eb104-48f2-48c3-9585-ffdba6e1c641}</Project>
       <Name>AvenueEntrega.Model</Name>
