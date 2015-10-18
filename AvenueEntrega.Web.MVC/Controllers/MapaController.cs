@@ -236,7 +236,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
                             !string.IsNullOrEmpty(fileContent.FileName))
                         {
                             string fileName = Path.GetFileName(fileContent.FileName);
-                            filePath = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                            filePath = Path.Combine(Server.MapPath("~/App_Data/Uploads"), fileName);
                             fileContent.SaveAs(filePath);
                         }
                     }
