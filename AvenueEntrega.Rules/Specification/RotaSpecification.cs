@@ -1,4 +1,5 @@
-﻿using AvenueEntrega.Model.Entities;
+﻿using AvenueEntrega.I18N;
+using AvenueEntrega.Model.Entities;
 
 namespace AvenueEntrega.Rules.Specification
 {
@@ -9,10 +10,10 @@ namespace AvenueEntrega.Rules.Specification
             rota.ClearBrokenRules();
 
             if(string.IsNullOrEmpty(rota.Origem))
-                rota.BrokenRules.Add("Origem","A rota precisa possuir uma origem");
+                rota.BrokenRules.Add("Origem",Resources.RotaSpecification_AttributeName_Origem);//A rota precisa possuir uma origem
 
             if(string.IsNullOrEmpty(rota.Destino))
-                rota.BrokenRules.Add("Destino","A rota precisa possuir um destino");
+                rota.BrokenRules.Add("Destino",Resources.RotaSpecification_AttributeName_Destino);//A rota precisa possuir um destino
 
             //TODO: declare more specifications if needed
         }

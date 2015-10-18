@@ -52,6 +52,10 @@
     <Compile Include="State.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AvenueEntrega.I18N\AvenueEntrega.I18N.csproj">
+      <Project>{497E5EEA-8DAA-452B-A9A6-A4766898FE0B}</Project>
+      <Name>AvenueEntrega.I18N</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AvenueEntrega.Model\AvenueEntrega.Model.csproj">
       <Project>{372EB104-48F2-48C3-9585-FFDBA6E1C641}</Project>
       <Name>AvenueEntrega.Model</Name>
