@@ -1,4 +1,5 @@
 ﻿using System;
+using AvenueEntrega.I18N;
 using AvenueEntrega.RepositoryFile;
 using AvenueEntrega.RepositoryFile.Messages.Mapa;
 using AvenueEntrega.Service.ETL.ExtensionMethods;
@@ -24,18 +25,18 @@ namespace AvenueEntrega.Service.ETL
                 {
                     response.Mapa = result;
                     response.Success = true;
-                    response.Message = "Arquivo processado com sucesso.";
+                    response.Message = Resources.FileServices_LoadMapaFromFile_Success_Message;
                 }
                 else
                 {
                     response.Success = false;
-                    response.Message = "Arquivo não encontrado.";
+                    response.Message = Resources.FileServices_LoadMapaFromFile_Fail_Message;
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.Message = "Erro: " + ex.Message;
+                response.Message = Resources.FileServices_LoadMapaFromFile_Error_Message + ex.Message;
             }
             return response;
         }
