@@ -12,7 +12,7 @@ namespace AvenueEntrega.Rules.UnitTest
         private Mother _mother;
         private Mapa _testMapa;
         private Mapa _romeniaMapa;
-        private IList<Rota> _rotas;
+        //private IList<Rota> _rotas;
 
         [SetUp]
         public void Init()
