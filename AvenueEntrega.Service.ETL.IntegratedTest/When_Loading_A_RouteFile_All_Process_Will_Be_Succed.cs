@@ -37,7 +37,7 @@ namespace AvenueEntrega.Service.ETL.IntegratedTest
         public void Test1_Loading_ClientExampleFile_Will_Pass()
         {
             var nomeMapa = "MyMap";
-            
+
             var request = new CarregarMapaRequest()
             {
                 NomeMapa = nomeMapa,
@@ -73,5 +73,6 @@ namespace AvenueEntrega.Service.ETL.IntegratedTest
             var mapa = response.Mapa.ConvertToMapa();
 
 
-        } 
+        }
+    }
 }
