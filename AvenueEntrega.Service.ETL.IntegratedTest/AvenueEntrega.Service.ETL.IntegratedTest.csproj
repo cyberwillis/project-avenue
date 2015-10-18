@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="When_Loading_A_RoutFile_All_Process_Will_Be_Succed.cs" />
+    <Compile Include="When_Loading_A_RouteFile_All_Process_Will_Be_Succed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +66,10 @@
     <ProjectReference Include="..\AvenueEntrega.Service.ETL\AvenueEntrega.Service.ETL.csproj">
       <Project>{65F7206B-427D-4644-A5CC-344085B2CFAC}</Project>
       <Name>AvenueEntrega.Service.ETL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AvenueEntrega.Services\AvenueEntrega.Services.csproj">
+      <Project>{237CC1BE-BE76-430C-A1D7-248070FE7438}</Project>
+      <Name>AvenueEntrega.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

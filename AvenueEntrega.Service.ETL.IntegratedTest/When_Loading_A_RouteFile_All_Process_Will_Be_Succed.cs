@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace AvenueEntrega.Service.ETL.IntegratedTest
 {
     [TestFixture]
-    public class When_Loading_A_RoutFile_All_Process_Will_Be_Succed
+    public class When_Loading_A_RouteFile_All_Process_Will_Be_Succed
     {
         private FileServices _fileServices;
         private string _fileName;
@@ -30,6 +30,7 @@ namespace AvenueEntrega.Service.ETL.IntegratedTest
             var mapaRepository = new MapaRepository(new NHUnitOfWork<Mapa>(new NHUnitOfWorkRepository<Mapa>()));
 
             this._fileServices = new FileServices(fileRepository);
+
         }
 
         [Test]
@@ -55,5 +56,22 @@ namespace AvenueEntrega.Service.ETL.IntegratedTest
             Assert.IsTrue(mapa.NomeMapa.Equals(nomeMapa));
             Assert.IsTrue(mapa.Rotas.Count == 6);
         }
-    }
+
+        [Test]
+        public void Test2_Persisting_ClientExampleFile_Will_Pass()
+        {
+            var nomeMapa = "MyMap";
+
+            var request = new CarregarMapaRequest()
+            {
+                NomeMapa = nomeMapa,
+                Arquivo = this._fileName
+            };
+
+            var response = this._fileServices.LoadMapaFromFile(request);
+
+            var mapa = response.Mapa.ConvertToMapa();
+
+
+        } 
 }
