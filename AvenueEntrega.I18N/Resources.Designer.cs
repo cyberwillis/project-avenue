@@ -133,6 +133,33 @@ namespace AvenueEntrega.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string FileServices_LoadMapaFromFile_Error_Message {
+            get {
+                return ResourceManager.GetString("FileServices_LoadMapaFromFile_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File not processed..
+        /// </summary>
+        public static string FileServices_LoadMapaFromFile_Fail_Message {
+            get {
+                return ResourceManager.GetString("FileServices_LoadMapaFromFile_Fail_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File processed with success..
+        /// </summary>
+        public static string FileServices_LoadMapaFromFile_Success_Message {
+            get {
+                return ResourceManager.GetString("FileServices_LoadMapaFromFile_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use this tool to calculate the lowest cost for the route.
         /// </summary>
         public static string MapaController_HttpGet_Action_CalcularCusto_ViewBag_Message {
@@ -250,6 +277,204 @@ namespace AvenueEntrega.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_AlterarMapa_Error_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_AlterarMapa_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_AlterarMapa_Fail_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_AlterarMapa_Fail_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map not found..
+        /// </summary>
+        public static string MapaServices_AlterarMapa_Fail2_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_AlterarMapa_Fail2_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map updated with success..
+        /// </summary>
+        public static string MapaServices_AlterarMapa_Success_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_AlterarMapa_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_CalcularRota_Error_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_CalcularRota_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map not found..
+        /// </summary>
+        public static string MapaServices_CalcularRota_Fail_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_CalcularRota_Fail_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_CalcularRota_Fail2_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_CalcularRota_Fail2_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success..
+        /// </summary>
+        public static string MapaServices_CalcularRota_Success_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_CalcularRota_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_EncontrarMapaPor_Error_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarMapaPor_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map not found..
+        /// </summary>
+        public static string MapaServices_EncontrarMapaPor_Fail_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarMapaPor_Fail_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map found..
+        /// </summary>
+        public static string MapaServices_EncontrarMapaPor_Success_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarMapaPor_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_EncontrarTodosMapas_Error_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarTodosMapas_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No maps found..
+        /// </summary>
+        public static string MapaServices_EncontrarTodosMapas_Failed_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarTodosMapas_Failed_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found {0} map(s).
+        /// </summary>
+        public static string MapaServices_EncontrarTodosMapas_Success_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarTodosMapas_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_ExcluirMapa_Error_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_ExcluirMapa_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map not found..
+        /// </summary>
+        public static string MapaServices_ExcluirMapa_Fail_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_ExcluirMapa_Fail_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map removed with success..
+        /// </summary>
+        public static string MapaServices_ExcluirMapa_Success_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_ExcluirMapa_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_InserirMapa_Error_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_InserirMapa_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_InserirMapa_Fail_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_InserirMapa_Fail_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map added with success..
+        /// </summary>
+        public static string MapaServices_InserirMapa_Success_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_InserirMapa_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The map name must be specified..
+        /// </summary>
+        public static string MapaSpecification_AttributeName_NomeMapa {
+            get {
+                return ResourceManager.GetString("MapaSpecification_AttributeName_NomeMapa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The map must have routes..
+        /// </summary>
+        public static string MapaSpecification_AttributeName_Rotas {
+            get {
+                return ResourceManager.GetString("MapaSpecification_AttributeName_Rotas", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filename.
         /// </summary>
         public static string MapaViewModel_AttributeName_Arquivo {
@@ -277,6 +502,51 @@ namespace AvenueEntrega.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The vehicle autonomy cannot be zero..
+        /// </summary>
+        public static string ProblemSpecification_AttributeName_AutonomiaVeiculo {
+            get {
+                return ResourceManager.GetString("ProblemSpecification_AttributeName_AutonomiaVeiculo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The destination must be specified..
+        /// </summary>
+        public static string ProblemSpecification_AttributeName_Destino {
+            get {
+                return ResourceManager.GetString("ProblemSpecification_AttributeName_Destino", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A map name must be specified..
+        /// </summary>
+        public static string ProblemSpecification_AttributeName_NomeMapa {
+            get {
+                return ResourceManager.GetString("ProblemSpecification_AttributeName_NomeMapa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The origin must be specified..
+        /// </summary>
+        public static string ProblemSpecification_AttributeName_Origem {
+            get {
+                return ResourceManager.GetString("ProblemSpecification_AttributeName_Origem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The fuel value cannot be zero..
+        /// </summary>
+        public static string ProblemSpecification_AttributeName_ValorCombustivel {
+            get {
+                return ResourceManager.GetString("ProblemSpecification_AttributeName_ValorCombustivel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Path.
         /// </summary>
         public static string ResultadoCustoViewModel_AttributeName_Caminho {
@@ -291,6 +561,24 @@ namespace AvenueEntrega.I18N {
         public static string ResultadoCustoViewModel_AttributeName_CustoTotal {
             get {
                 return ResourceManager.GetString("ResultadoCustoViewModel_AttributeName_CustoTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The route must have a destination..
+        /// </summary>
+        public static string RotaSpecification_AttributeName_Destino {
+            get {
+                return ResourceManager.GetString("RotaSpecification_AttributeName_Destino", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The route must have a origin..
+        /// </summary>
+        public static string RotaSpecification_AttributeName_Origem {
+            get {
+                return ResourceManager.GetString("RotaSpecification_AttributeName_Origem", resourceCulture);
             }
         }
         

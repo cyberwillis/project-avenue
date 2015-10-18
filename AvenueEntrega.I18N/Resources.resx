@@ -141,6 +141,15 @@
   <data name="ExcluirMapaViewModel_AttributeName_NomeMapa" xml:space="preserve">
     <value>Map name</value>
   </data>
+  <data name="FileServices_LoadMapaFromFile_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="FileServices_LoadMapaFromFile_Fail_Message" xml:space="preserve">
+    <value>File not processed.</value>
+  </data>
+  <data name="FileServices_LoadMapaFromFile_Success_Message" xml:space="preserve">
+    <value>File processed with success.</value>
+  </data>
   <data name="MapaController_HttpGet_Action_CalcularCusto_ViewBag_Message" xml:space="preserve">
     <value>Use this tool to calculate the lowest cost for the route</value>
   </data>
@@ -179,6 +188,66 @@
   </data>
   <data name="MapaController_HttpPost_Action_Delete_ViewBag_Title" xml:space="preserve">
     <value>Delete map:</value>
+  </data>
+  <data name="MapaServices_AlterarMapa_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_AlterarMapa_Fail2_Message" xml:space="preserve">
+    <value>Map not found.</value>
+  </data>
+  <data name="MapaServices_AlterarMapa_Fail_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_AlterarMapa_Success_Message" xml:space="preserve">
+    <value>Map updated with success.</value>
+  </data>
+  <data name="MapaServices_CalcularRota_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_CalcularRota_Fail2_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_CalcularRota_Fail_Message" xml:space="preserve">
+    <value>Map not found.</value>
+  </data>
+  <data name="MapaServices_CalcularRota_Success_Message" xml:space="preserve">
+    <value>Success.</value>
+  </data>
+  <data name="MapaServices_EncontrarMapaPor_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_EncontrarMapaPor_Fail_Message" xml:space="preserve">
+    <value>Map not found.</value>
+  </data>
+  <data name="MapaServices_EncontrarMapaPor_Success_Message" xml:space="preserve">
+    <value>Map found.</value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapas_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapas_Failed_Message" xml:space="preserve">
+    <value>No maps found.</value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapas_Success_Message" xml:space="preserve">
+    <value>Found {0} map(s)</value>
+  </data>
+  <data name="MapaServices_ExcluirMapa_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_ExcluirMapa_Fail_Message" xml:space="preserve">
+    <value>Map not found.</value>
+  </data>
+  <data name="MapaServices_ExcluirMapa_Success_Message" xml:space="preserve">
+    <value>Map removed with success.</value>
+  </data>
+  <data name="MapaServices_InserirMapa_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_InserirMapa_Fail_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_InserirMapa_Success_Message" xml:space="preserve">
+    <value>Map added with success.</value>
   </data>
   <data name="MapaViewModel_AttributeName_Arquivo" xml:space="preserve">
     <value>Filename</value>
@@ -251,5 +320,32 @@
   </data>
   <data name="View_Layout_Cultura_Portugues" xml:space="preserve">
     <value>Portuguese</value>
+  </data>
+  <data name="MapaSpecification_AttributeName_NomeMapa" xml:space="preserve">
+    <value>The map name must be specified.</value>
+  </data>
+  <data name="MapaSpecification_AttributeName_Rotas" xml:space="preserve">
+    <value>The map must have routes.</value>
+  </data>
+  <data name="ProblemSpecification_AttributeName_AutonomiaVeiculo" xml:space="preserve">
+    <value>The vehicle autonomy cannot be zero.</value>
+  </data>
+  <data name="ProblemSpecification_AttributeName_Destino" xml:space="preserve">
+    <value>The destination must be specified.</value>
+  </data>
+  <data name="ProblemSpecification_AttributeName_NomeMapa" xml:space="preserve">
+    <value>A map name must be specified.</value>
+  </data>
+  <data name="ProblemSpecification_AttributeName_Origem" xml:space="preserve">
+    <value>The origin must be specified.</value>
+  </data>
+  <data name="ProblemSpecification_AttributeName_ValorCombustivel" xml:space="preserve">
+    <value>The fuel value cannot be zero.</value>
+  </data>
+  <data name="RotaSpecification_AttributeName_Destino" xml:space="preserve">
+    <value>The route must have a destination.</value>
+  </data>
+  <data name="RotaSpecification_AttributeName_Origem" xml:space="preserve">
+    <value>The route must have a origin.</value>
   </data>
 </root>
