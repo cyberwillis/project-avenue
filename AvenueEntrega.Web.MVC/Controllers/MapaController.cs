@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using AvenueEntrega.DataContracts.Dto;
 using AvenueEntrega.DataContracts.Messages.Mapa;
 using AvenueEntrega.DataContracts.Messages.Problema;
+using AvenueEntrega.I18N;
+using AvenueEntrega.Infrastructure;
 using AvenueEntrega.Model.Entities;
 using AvenueEntrega.RepositoryFile;
 using AvenueEntrega.RepositoryFile.Messages.Mapa;
@@ -26,7 +28,7 @@ using WebGrease.Css.Extensions;
 
 namespace AvenueEntrega.Web.MVC.Controllers
 {
-    public class MapaController : Controller
+    public class MapaController : ControllerBase
     {
         private IMapaService _mapaServices;
         private FileServices _fileServices;
@@ -50,7 +52,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            ViewBag.Title = "Mapas Cadastrados";
+            ViewBag.Title = Resources.MapaController_HttpGet_Action_Index_ViewBag_Title; //"Mapas Cadastrados"
 
             var response = _mapaServices.EncontrarTodosMapas();
             if (response.Success)
@@ -77,7 +79,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpGet]
         public PartialViewResult List()
         {
-            ViewBag.Title = "Mapas Cadastrados";
+            ViewBag.Title = Resources.MapaController_HttpGet_Action_List_ViewBag_Title;//"Mapas Cadastrados"
 
             var response = _mapaServices.EncontrarTodosMapas();
             if (response.Success)
@@ -101,15 +103,15 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpGet]
         public PartialViewResult CalcularCusto(string id)
         {
-            ViewBag.Title = "Calculadora de Rota e Custo:";
-            
+            ViewBag.Title = Resources.MapaController_HttpGet_Action_CalcularCusto_ViewBag_Title; //"Calcular custo para o trajeto:"
+
             var request = new EncontrarMapaPorRequest() {Mapa = new MapaDto() {Id = id} };
             var response = _mapaServices.EncontrarMapaPor(request);
 
             if (response.Success)
             {
                 ViewBag.MessageType = "alert-warning";
-                ViewBag.Message = "Utilize esta ferramenta para calcular o menor trajeto e seu custo.";
+                ViewBag.Message = Resources.MapaController_HttpGet_Action_CalcularCusto_ViewBag_Message;//"Utilize esta ferramenta para calcular o menor trajeto e seu custo.";
 
                 var origens = response.Mapa.Rotas.ConvertToListRotaOrigemViewMode();
                 var destinos = response.Mapa.Rotas.ConvertToListRotaDestinoViewMode();
@@ -138,16 +140,18 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpPost]
         public PartialViewResult CalcularCusto(CalculoCustoViewModel model, FormCollection forms)
         {
-            ViewBag.Title = "Calculadora de Rota e Custo:";
+            ViewBag.Title =Resources.MapaController_HttpPost_Action_CalcularCusto_ViewBag_Title;//"Calculadora de Rota e Custo:";
             
             model.Origem = forms["Origens"];
             model.Destino = forms["Destinos"];
 
             //Fix to compromise the calculation if one of the states was not set
-            if (model.Origem.Equals("Selecione"))
+            //Selecione
+            if (model.Origem.Equals(Resources.SelectList_Null_Item))
                 model.Origem = string.Empty;
 
-            if (model.Destino.Equals("Selecione"))
+            //Selecione
+            if (model.Destino.Equals(Resources.SelectList_Null_Item))
                 model.Destino = string.Empty;
             
             var request = new CalcularMelhorRotaRequest(){ Problema = new ProblemaDto()
@@ -184,7 +188,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
             }
             else
             {
-                ViewBag.Title = "Calculadora de Rota e Custo:";
+                ViewBag.Title = Resources.MapaController_HttpPost_Action_CalcularCusto_ViewBag_Title;//"Calculadora de Rota e Custo:";
                 ViewBag.MessageType = "alert-warning";
                 ViewBag.Message = response.Message;
 
@@ -202,10 +206,10 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpGet]
         public PartialViewResult Create()
         {
-            ViewBag.Title = "Cadastrar novo Mapa";
+            ViewBag.Title = Resources.MapaController_HttpGet_Action_Create_ViewBag_Title;//"Cadastrar novo Mapa";
 
             ViewBag.MessageType = "alert-warning";
-            ViewBag.Message = "Utilize esta ferramenta para cadastrar um mapa novo. Se o mapa já existir ele sera removido e re-criado.";
+            ViewBag.Message = Resources.MapaController_HttpGet_Action_Create_ViewBag_Message;//"Utilize esta ferramenta para cadastrar um novo mapa. Se o mapa já existir ele sera removido e re-criado.";
 
             var model = new CadastrarMapaViewModel();
 
@@ -215,7 +219,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpPost]
         public async Task<PartialViewResult> Create(string id,FormCollection form)
         {
-            ViewBag.Title = "Cadastrar novo Mapa";
+            ViewBag.Title = Resources.MapaController_HttpPost_Action_Create_ViewBag_Title;//"Cadastrar novo Mapa";
 
             string filePath = string.Empty;
 
@@ -279,7 +283,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
                     else
                     {
                         ViewBag.MessageType = "alert-danger";
-                        ViewBag.Message = "O arquivo de carga precisa ser especificado.";
+                        ViewBag.Message = Resources.MapaController_HttpPost_Action_Create_ViewBag_Message;//"O arquivo de carga precisa ser especificado.";
                         //ModelState.AddModelError("File", response.Message);
 
                         var model = new CadastrarMapaViewModel() {NomeMapa = nomeMapa};
@@ -296,7 +300,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
                 else
                 {
                     ViewBag.MessageType = "alert-danger";
-                    ViewBag.Message = "O nome do mapa precisa ser especificado";
+                    ViewBag.Message = Resources.MapaController_HttpPost_Action_Create_ViewBag_Message2;//"O nome do mapa precisa ser especificado";
 
                     //ModelState.AddModelError("NomeMapa","O nome do mapa precisa ser especificado");
 
@@ -326,15 +330,15 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpGet]
         public PartialViewResult Delete(string id)
         {
-            ViewBag.Title = "Excluir mapa";
-            
+            ViewBag.Title = Resources.MapaController_HttpGet_Action_Delete_ViewBag_Title;//"Excluir mapa";
+
             var request = new EncontrarMapaPorRequest() { Mapa = new MapaDto() { Id = id } };
             var response = _mapaServices.EncontrarMapaPor(request);
 
             if (response.Success)
             {
                 ViewBag.MessageType = "alert-danger";
-                ViewBag.Message = "Deseja realmente excluir este mapa ? ";
+                ViewBag.Message = Resources.MapaController_HttpGet_Action_Delete_ViewBag_Message;//"Deseja realmente excluir este mapa ? ";
 
                 var model = new ExcluirMapaViewModel() {Id = id, NomeMapa = response.Mapa.NomeMapa};
 
@@ -352,7 +356,7 @@ namespace AvenueEntrega.Web.MVC.Controllers
         [HttpPost]
         public PartialViewResult Delete(ExcluirMapaViewModel model)
         {
-            ViewBag.Title = "Excluir mapa";
+            ViewBag.Title = Resources.MapaController_HttpPost_Action_Delete_ViewBag_Title;//"Excluir mapa";
             
             var request = new ExcluirMapaRequest() {Mapa = new MapaDto() {Id = model.Id, NomeMapa = model.NomeMapa}};
             var response = _mapaServices.ExcluirMapa(request);
@@ -371,6 +375,29 @@ namespace AvenueEntrega.Web.MVC.Controllers
 
                 return PartialView("SucessoPartialView");
             }
+        }
+
+
+        public RedirectResult SetCulture(string culture, string url)
+        {
+            culture = CultureHelper.GetImplementedCulture(culture);
+
+            HttpCookie cookie = Request.Cookies["_culture"];
+            if (cookie != null)
+            {
+                cookie.Value = culture;
+            }
+            else
+            {
+                cookie = new HttpCookie("_culture");
+                cookie.Value = culture;
+                cookie.Expires = DateTime.Now.AddYears(1);
+            }
+
+            Response.Cookies.Add(cookie);
+
+            return Redirect(url);
+            //return RedirectToAction("Index");
         }
     }
 }

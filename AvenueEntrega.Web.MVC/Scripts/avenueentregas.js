@@ -89,3 +89,12 @@ function ajaxFormSubmit(targetAfterClose) {
     });
 };
 
+/*
+Script para acesso a troca de linguagem 
+*/
+$(document).ready(function () {
+    $("input[type = 'radio']").click(function () {
+        $('#url').val(window.location.href);
+        $(this).parents("form").submit(); // post form
+    });
+});

@@ -1,10 +1,11 @@
-﻿@model AvenueEntrega.Web.MVC.Models.ExcluirMapaViewModel
+﻿@using AvenueEntrega.I18N
+@model AvenueEntrega.Web.MVC.Models.ExcluirMapaViewModel
 
 <div class="modal-dialog">
     <div class="modal-content">
 
         <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">@Resources.Views_Mapa_ExcluirMapaPartialView_Button_Fechar</span></button>
             <h3 id="myModalLabel" class="modal-title">&nbsp;@ViewBag.Title</h3>
         </div>
         @if (!string.IsNullOrEmpty(ViewBag.MessageType))
@@ -48,8 +49,8 @@
             </div>
         </div>
         <div class="modal-footer form-horizontal">
-            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">Cancelar</button>
-            <a id="excluirMapa" onclick="ajaxFormSubmit(this)" href="#" role="button" class="btn btn-sm btn-danger">Excluir</a>
+            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal" aria-hidden="true">@Resources.Views_Mapa_ExcluirMapaPartialView_Button_Cancelar</button>
+            <a id="excluirMapa" onclick="ajaxFormSubmit(this)" href="#" role="button" class="btn btn-sm btn-danger">@Resources.Views_Mapa_ExcluirMapaPartialView_Button_Excluir</a>
         </div>
     </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->

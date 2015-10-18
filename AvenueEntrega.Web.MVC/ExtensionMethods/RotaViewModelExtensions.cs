@@ -13,7 +13,7 @@ namespace AvenueEntrega.Web.MVC.ExtensionMethods
             foreach (var rotaDto in rotasDto)
             {
                 if(!dict.ContainsKey(rotaDto.Destino))
-                    dict.Add(rotaDto.Destino, "");
+                    dict.Add(rotaDto.Destino, string.Empty);
             }
 
             var rotasDestino = dict.Select(item => new RotaDestinoViewModel() {Destino = item.Key}).ToList();
@@ -30,7 +30,7 @@ namespace AvenueEntrega.Web.MVC.ExtensionMethods
             foreach (var rotaDto in rotasDto)
             {
                 if (!dict.ContainsKey(rotaDto.Origem))
-                    dict.Add(rotaDto.Origem, "");
+                    dict.Add(rotaDto.Origem, string.Empty);
             }
 
             var rotasOrigem = dict.Select(item => new RotaOrigemViewModel() {Origem = item.Key}).ToList();

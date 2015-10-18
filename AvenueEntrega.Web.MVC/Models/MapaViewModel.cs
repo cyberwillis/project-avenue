@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using AvenueEntrega.I18N;
 
 namespace AvenueEntrega.Web.MVC.Models
 {
     public class MapaViewModel
     {
-        [Display(Name = "Codigo")]
+        [Display(Name = "MapaViewModel_AttributeName_Id", ResourceType = typeof(Resources))]
         public string Id { get; set; }
-        [Display(Name = "Nome do Mapa")]
+        [Display(Name = "MapaViewModel_AttributeName_NomeMapa", ResourceType = typeof(Resources))]
         public string NomeMapa { get; set; }
-        [Display(Name = "Arquivo para carga (.txt)")]
+        [Display(Name = "MapaViewModel_AttributeName_Arquivo", ResourceType = typeof(Resources))]
         public string Arquivo { get; set; }
         //public IList<ListaMapaViewModel> Mapas { get; set; }
 
