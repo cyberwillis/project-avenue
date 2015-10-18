@@ -1,9 +1,12 @@
-﻿using AvenueEntrega.DataContracts.Dto;
+﻿using System.ServiceModel;
+using AvenueEntrega.DataContracts.Dto;
 
 namespace AvenueEntrega.DataContracts.Messages.Mapa
 {
+    [MessageContract(WrapperNamespace = "messages.avenueentrega.com")]
     public class EncontrarMapaPorResponse : ResponseBase
     {
-         public MapaDto Mapa { get; set; }
+        [MessageBodyMember]
+        public MapaDto Mapa { get; set; }
     }
 }
