@@ -1,0 +1,3 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" 
+    Factory="AvenueEntrega.Web.WCF.WcfServiceFactory"
+    Service="AvenueEntrega.Services.MapaServices"  %>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -142,14 +143,16 @@ namespace AvenueEntrega.Web.MVC.Controllers
                 var origens = response.Mapa.Rotas.ConvertToListRotaOrigemViewMode();
                 var destinos = response.Mapa.Rotas.ConvertToListRotaDestinoViewMode();
 
+                IFormatProvider culture = Thread.CurrentThread.CurrentCulture;
+
                 var model = new CalculoCustoViewModel()
                 {
                     Id = id,
                     NomeMapa = response.Mapa.NomeMapa,
                     Origens = origens,
                     Destinos = destinos,
-                    AutonomiaVeiculo = "0.00",
-                    ValorCombustivel = "0.00"
+                    AutonomiaVeiculo = (0m).ToString("n", culture),
+                    ValorCombustivel = (0m).ToString("n", culture),
                 };
 
                 return PartialView("CalcularCustoPartialView", model);
