@@ -348,4 +348,16 @@
   <data name="RotaSpecification_AttributeName_Origem" xml:space="preserve">
     <value>A rota precisa possuir uma origem.</value>
   </data>
+  <data name="MapaController_HttpPost_Action_Find_ViewBag_Title" xml:space="preserve">
+    <value>Mapas cadastrados.</value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapasPor_Error_Message" xml:space="preserve">
+    <value>Erro: </value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapasPor_Fail_Message" xml:space="preserve">
+    <value>Nenhum mapa encontrado.</value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapasPor_Success_Message" xml:space="preserve">
+    <value>Encontrado(s) {0} mapa(s).</value>
+  </data>
 </root>

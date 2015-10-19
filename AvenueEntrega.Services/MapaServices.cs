@@ -45,6 +45,33 @@ namespace AvenueEntrega.Services
             return response;
         }
 
+        public EncontrarTodosMapasPorResponse EncontrarTodosMapasPor(EncontrarTodosMapasPorRequest request)
+        {
+            var response = new EncontrarTodosMapasPorResponse();
+            try
+            {
+                var nomeMapa = request.Mapa.NomeMapa;
+                var mapas = _mapaRepository.FindAllByName(nomeMapa);
+                if (mapas != null)
+                {
+                    response.Success = true;
+                    response.Message = Resources.MapaServices_EncontrarTodosMapasPor_Success_Message;
+                    response.Mapas = mapas.ConvertToListMapasDto();
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message = Resources.MapaServices_EncontrarTodosMapasPor_Fail_Message;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Success = false;
+                response.Message = Resources.MapaServices_EncontrarTodosMapasPor_Error_Message + ex.Message;
+            }
+            return response;
+        }
+
         public EncontrarMapaPorResponse EncontrarMapaPor(EncontrarMapaPorRequest request)
         {
             Mapa mapa = null;

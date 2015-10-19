@@ -348,4 +348,16 @@
   <data name="RotaSpecification_AttributeName_Origem" xml:space="preserve">
     <value>The route must have a origin.</value>
   </data>
+  <data name="MapaController_HttpPost_Action_Find_ViewBag_Title" xml:space="preserve">
+    <value>Registred maps</value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapasPor_Error_Message" xml:space="preserve">
+    <value>Error: </value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapasPor_Fail_Message" xml:space="preserve">
+    <value>Map not found.</value>
+  </data>
+  <data name="MapaServices_EncontrarTodosMapasPor_Success_Message" xml:space="preserve">
+    <value>Found {0} map(s)</value>
+  </data>
 </root>

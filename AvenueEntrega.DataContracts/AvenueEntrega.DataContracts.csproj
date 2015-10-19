@@ -47,6 +47,8 @@
     <Compile Include="Dto\RotaDto.cs" />
     <Compile Include="Messages\Mapa\AlterarMapaRequest.cs" />
     <Compile Include="Messages\Mapa\AlterarMapaResponse.cs" />
+    <Compile Include="Messages\Mapa\EncontrarTodosMapasPorRequest.cs" />
+    <Compile Include="Messages\Mapa\EncontrarTodosMapasPorResponse.cs" />
     <Compile Include="Messages\Problema\CalcularMelhorRotaRequest.cs" />
     <Compile Include="Messages\Mapa\EncontrarMapaPorRequest.cs" />
     <Compile Include="Messages\Mapa\EncontrarMapaPorResponse.cs" />

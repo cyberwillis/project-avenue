@@ -100,6 +100,32 @@ namespace AvenueEntrega.Web.MVC.Controllers
             }
         }
 
+        [HttpPost]
+        public PartialViewResult Find(string nomeMapa)
+        {
+            ViewBag.Title = Resources.MapaController_HttpGet_Action_List_ViewBag_Title;//"Mapas Cadastrados"
+
+            var request = new EncontrarTodosMapasPorRequest() {Mapa = new MapaDto() {NomeMapa = nomeMapa} };
+
+            var response = _mapaServices.EncontrarTodosMapasPor(request);
+            if (response.Success)
+            {
+                ViewBag.MessageType = "alert-info";
+                ViewBag.Message = response.Message;
+
+                var model = response.Mapas.ConvertToListMapaViewModel();
+                return PartialView("ListaMapasPartialView", model);
+            }
+            else
+            {
+                ViewBag.MessageType = "alert-warning";
+                ViewBag.Message = response.Message;
+
+                var model = new List<MapaViewModel>();
+                return PartialView("ListaMapasPartialView", model);
+            }
+        }
+
         [HttpGet]
         public PartialViewResult CalcularCusto(string id)
         {

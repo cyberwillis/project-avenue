@@ -24,6 +24,10 @@ namespace AvenueEntrega.ServiceContracts
         [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         EncontrarMapaPorResponse EncontrarMapaPor(EncontrarMapaPorRequest request);
 
+        [OperationContract]
+        [WebInvoke(Method = "POST", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
+        EncontrarTodosMapasPorResponse EncontrarTodosMapasPor(EncontrarTodosMapasPorRequest request);
+
         InserirMapaResponse InserirMapa(InserirMapaRequest request);
 
         AlterarMapaResponse AlterarMapa(AlterarMapaRequest request);

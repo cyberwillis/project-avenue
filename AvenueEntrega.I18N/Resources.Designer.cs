@@ -277,6 +277,15 @@ namespace AvenueEntrega.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Registred maps.
+        /// </summary>
+        public static string MapaController_HttpPost_Action_Find_ViewBag_Title {
+            get {
+                return ResourceManager.GetString("MapaController_HttpPost_Action_Find_ViewBag_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error: .
         /// </summary>
         public static string MapaServices_AlterarMapa_Error_Message {
@@ -399,6 +408,33 @@ namespace AvenueEntrega.I18N {
         public static string MapaServices_EncontrarTodosMapas_Success_Message {
             get {
                 return ResourceManager.GetString("MapaServices_EncontrarTodosMapas_Success_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error: .
+        /// </summary>
+        public static string MapaServices_EncontrarTodosMapasPor_Error_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarTodosMapasPor_Error_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Map not found..
+        /// </summary>
+        public static string MapaServices_EncontrarTodosMapasPor_Fail_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarTodosMapasPor_Fail_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found {0} map(s).
+        /// </summary>
+        public static string MapaServices_EncontrarTodosMapasPor_Success_Message {
+            get {
+                return ResourceManager.GetString("MapaServices_EncontrarTodosMapasPor_Success_Message", resourceCulture);
             }
         }
         
