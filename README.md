@@ -1,10 +1,16 @@
+#AvenueEntrega
+
+## Motivação
 O projeto teve como tecnologia escolhida a plataforma Asp.net. 
 Mesmo sendo um teste para avaliação, existe um risco grande do domínio do problema ser maior do que o solicitado e girar em torno de diversos e complexos Bounded Contexts e necessidades outras integrações. Por este motivo escolhi a plataforma .net devido a sua capacidade de se adaptar a diferentes cenários mais pesados ou não.
 
+##
 Para este sistema fiz uma segregação de responsabilidades e desenvolvi com duas premissas em mente:
+
 1-	Disponibilizar um portal para carregamento de arquivos de mapas pelo administrador do sistema. Até este ponto, não coloquei segurança de usuário para não haver necessidade de mais integrações como por exemplo questões do tipo:
 Usuário local ou relacionado ao usuário de rede de um ambiente coorporativo onde suas permissões de aplicações definidas no LDAP possam ser importadas e libere acesso ao serviço de carregamento de mapa?
 Visando fugir destas questões mais complexas por não ter toda a visão do negocio, me concentrei na arquitetura do sistema e suas funcionalidades principais.
+
 2-	Disponibilizar um WebService (API) em que uma aplicação mobile ou um sistema externo pudesse ser desenvolvido para acessar este dado.
 O desenvolvimento do portal segue a arquitetura em CRUD - N camadas (Onion Arquitecture):
 1-	Infrastructure
