@@ -2,10 +2,11 @@
 
 ## Motivação
 O projeto teve como tecnologia escolhida a plataforma Asp.net. 
-Mesmo sendo um teste para avaliação, existe um risco grande do domínio do problema ser maior do que o solicitado e girar em torno de diversos e complexos Bounded Contexts e necessidades outras integrações. Por este motivo escolhi a plataforma .net devido a sua capacidade de se adaptar a diferentes cenários mais pesados ou não.
+Primeiramente por ser a linguagem que tenho mais facilidade para implementações.
+Segundo por existir um fator de risco desconhecido para mim na aplicação de Python em determinadas areas deste projeto que me fariam levar bem mais do que o tempo estimado.
 
-##
-Para este sistema fiz uma segregação de responsabilidades e desenvolvi com duas premissas em mente:
+Acredito que a definição de um problema deva ser analisado cautelosamente antes de se definir a plataforma, pois uma vez feita a escolha, para um modulo dificilmente será fácil altera-la.
+Então para este teste optei por uma segregação de responsabilidades e desenvolvi com duas premissas em mente:
 
 1-	Disponibilizar um portal para carregamento de arquivos de mapas pelo administrador do sistema. Até este ponto, não coloquei segurança de usuário para não haver necessidade de mais integrações como por exemplo questões do tipo:
 Usuário local ou relacionado ao usuário de rede de um ambiente coorporativo onde suas permissões de aplicações definidas no LDAP possam ser importadas e libere acesso ao serviço de carregamento de mapa?
