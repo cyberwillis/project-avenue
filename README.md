@@ -18,6 +18,7 @@ Visando fugir destas questões mais complexas por não ter toda a visão do nego
 
 ###1-	Infrastructure Layer
 a.	AvenueEntrega.I18N (Internacionalização)
+
 b.	AvenueEntrega.Infrastructure (suporte para internacionalização)
 
 ###2-	Domain Model Layer
@@ -37,7 +38,7 @@ c.	AvenueEntrega.RepositoryNHibernate.IntegratesTest (Camada para testes com ban
 ###4-	Services Layer
 a.	AvenueEntrega.DataContracts (camada de classes responsável por mensagerias trocadas entre o sistema do modelo e serviços)
 
-b.	AvenueEntrega.ServiceETL (camada responsável por instanciar o repositório de arquivo e tratar o arquivo txt enviado antes de persisti-lo)
+b.	AvenueEntrega.Service.ETL (camada responsável por instanciar o repositório de arquivo e tratar o arquivo txt enviado antes de persisti-lo)
 
 c.	AvenueEntrega.Service.ETL.IntegratedTest
 
@@ -57,4 +58,21 @@ b.	Avenie.Entrega.Web.WCF (API para consumo por outros sistemas, sem envio de ma
 
 A melhor maneira de efetuar os testes nesta aplicação é atravéz do visual studio caso esteja disponível.
 
-1- Abrir a solucao
+###Primeira opção
+
+1- Abrir a solução;
+
+2- Setar A solucao "AvenueEntrega.Web.MVC" e setar como principal (clicar com o botao direito e em seguida em "Set as StartUp Project" );
+
+3- Executar o projeto (F5);
+
+###Segunda opção
+
+1- Possui o IIS disponível numa máquina.
+
+2- Pegar o deploy enviado por e-mail à Natália, e coloca-lo numa pasta que possa ser mapeado pelo IIS como uma aplicação;
+
+3- Acessar a aplicação. (http://localhost/<nome do mapeamento no IIS>)
+
+4- O IIS possui um limite trafego de dados permitido pelo 
+
