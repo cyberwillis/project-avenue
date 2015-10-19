@@ -89,6 +89,22 @@ function ajaxFormSubmit(targetAfterClose) {
     });
 };
 
+function ajaxFormSubmitBuscar(targetAfterClose) {
+
+    var $form = $('#form0');
+
+    var options = {
+        url: $form.attr("action") + '?t=' + gettick(),
+        type: $form.attr("method"),
+        data: $form.serialize(),
+    };
+    alert('ok')
+    $.ajax(options).done(function (data) {
+        var $target = $($form.attr("data-ajax-update"));
+        $target.html(data);
+    });
+};
+
 /*
 Script para acesso a troca de linguagem 
 */
@@ -96,5 +112,31 @@ $(document).ready(function () {
     $("input[type = 'radio']").click(function () {
         $('#url').val(window.location.href);
         $(this).parents("form").submit(); // post form
+    });
+});
+
+
+function buscarMapas(targetAfterClose) {
+    //alert();
+    var $form = $('#formEncontrarMapas');
+
+    var options = {
+        url: $form.attr("action"),
+        type: $form.attr("method"),
+        data: $form.serialize()
+    };
+
+    $.ajax(options).done(function (data) {
+        var $target = $($form.attr("data-ajax-update"));
+        $target.html(data);
+    });
+};
+
+$(document).ready(function () {
+    $('#formEncontrarMapas').keydown(function (event) {
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            return false;
+        }
     });
 });

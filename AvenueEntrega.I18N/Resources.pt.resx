@@ -360,4 +360,10 @@
   <data name="MapaServices_EncontrarTodosMapasPor_Success_Message" xml:space="preserve">
     <value>Encontrado(s) {0} mapa(s).</value>
   </data>
+  <data name="Views_Mapa_ListarMapasPartialView_Button_Buscar" xml:space="preserve">
+    <value>Encontrar mapas:</value>
+  </data>
+  <data name="Views_Mapa_ListarMapasPartialView_Label_Buscar" xml:space="preserve">
+    <value>Enviar</value>
+  </data>
 </root>

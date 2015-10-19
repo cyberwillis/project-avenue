@@ -745,6 +745,24 @@ namespace AvenueEntrega.I18N {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Find maps:.
+        /// </summary>
+        public static string Views_Mapa_ListarMapasPartialView_Button_Buscar {
+            get {
+                return ResourceManager.GetString("Views_Mapa_ListarMapasPartialView_Button_Buscar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send.
+        /// </summary>
+        public static string Views_Mapa_ListarMapasPartialView_Label_Buscar {
+            get {
+                return ResourceManager.GetString("Views_Mapa_ListarMapasPartialView_Label_Buscar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         public static string Views_Mapa_ResultadoCustoPartialView_Button_Fechar {

@@ -101,11 +101,11 @@ namespace AvenueEntrega.Web.MVC.Controllers
         }
 
         [HttpPost]
-        public PartialViewResult Find(string nomeMapa)
+        public PartialViewResult Find(string nomeMapa, FormCollection form)
         {
             ViewBag.Title = Resources.MapaController_HttpGet_Action_List_ViewBag_Title;//"Mapas Cadastrados"
 
-            var request = new EncontrarTodosMapasPorRequest() {Mapa = new MapaDto() {NomeMapa = nomeMapa} };
+            var request = new EncontrarTodosMapasPorRequest() {Mapa = new MapaDto() {NomeMapa = nomeMapa } };
 
             var response = _mapaServices.EncontrarTodosMapasPor(request);
             if (response.Success)

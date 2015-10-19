@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AvenueEntrega.Model.Entities;
 using AvenueEntrega.Model.Repository;
+using NHibernate.Linq;
 
 namespace AvenueEntrega.RepositoryNHibernate.Repositories
 {
@@ -22,11 +24,12 @@ namespace AvenueEntrega.RepositoryNHibernate.Repositories
 
         public IList<Mapa> FindAllByName(string name)
         {
-            var mapas = from m in SessionFactory.GetCurrentSession().QueryOver<Mapa>()
-                       where m.NomeMapa.Contains(name)
-                       select m;
+            var mapas = SessionFactory.GetCurrentSession()
+                .Query<Mapa>()
+                .Where(x => x.NomeMapa
+                .Contains(name));
 
-            return mapas.List();
+            return mapas.ToList();
         }
     }
 }
