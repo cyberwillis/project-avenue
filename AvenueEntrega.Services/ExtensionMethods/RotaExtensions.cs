@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using AvenueEntrega.DataContracts.Dto;
 using AvenueEntrega.Model.Entities;
 
@@ -10,11 +11,13 @@ namespace AvenueEntrega.Services.ExtensionMethods
     {
         public static RotaDto ConvertToRotaDto( this Rota rota)
         {
+            IFormatProvider culture = Thread.CurrentThread.CurrentCulture;
+
             var rotaDto = new RotaDto();
             rotaDto.Id = rota.Id.ToString();
             rotaDto.Origem = rota.Origem;
             rotaDto.Destino = rota.Destino;
-            rotaDto.Custo = rota.Custo.ToString();
+            rotaDto.Custo = rota.Custo.ToString("n", culture);
 
             return rotaDto;
         }
@@ -29,13 +32,16 @@ namespace AvenueEntrega.Services.ExtensionMethods
 
         public static Rota ConvertToRota(this RotaDto rotaDto)
         {
+            IFormatProvider culture = Thread.CurrentThread.CurrentCulture;
+
             var rota = new Rota();
             if(!string.IsNullOrEmpty(rotaDto.Id))
                 rota.Id = Guid.Parse(rotaDto.Id);
 
             rota.Origem = rotaDto.Origem;
             rota.Destino = rotaDto.Destino;
-            rota.Custo = decimal.Parse(rotaDto.Custo);
+            
+            rota.Custo = decimal.Parse(rotaDto.Custo, culture);
 
             return rota;
         }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using AvenueEntrega.RepositoryFile.Converters;
 using FileHelpers;
 
 namespace AvenueEntrega.RepositoryFile.Dto
@@ -9,7 +11,8 @@ namespace AvenueEntrega.RepositoryFile.Dto
         public string Origem;
 
         public string Destino;
-
+        
+        //[FieldConverter(typeof(ValueConverter))]
         [FieldConverter(ConverterKind.Decimal, ".")]
         public decimal Custo;
     }

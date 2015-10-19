@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.I18N", "Avenu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.Infrastructure", "AvenueEntrega.Infrastructure\AvenueEntrega.Infrastructure.csproj", "{9C2D4024-243D-4AE8-93AD-872F1E457AF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvenueEntrega.Web.WCF", "AvenueEntrega.Web.WCF\AvenueEntrega.Web.WCF.csproj", "{74D511C2-8C25-4FDE-B4DC-820784EA93E1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{9C2D4024-243D-4AE8-93AD-872F1E457AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C2D4024-243D-4AE8-93AD-872F1E457AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C2D4024-243D-4AE8-93AD-872F1E457AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74D511C2-8C25-4FDE-B4DC-820784EA93E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74D511C2-8C25-4FDE-B4DC-820784EA93E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74D511C2-8C25-4FDE-B4DC-820784EA93E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74D511C2-8C25-4FDE-B4DC-820784EA93E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,5 +142,6 @@ Global
 		{C5F08EB1-15F3-4F26-AA1B-B66E16108109} = {23B5EFF8-54FF-4DDE-93A3-F79EABCBBABD}
 		{497E5EEA-8DAA-452B-A9A6-A4766898FE0B} = {C5F08EB1-15F3-4F26-AA1B-B66E16108109}
 		{9C2D4024-243D-4AE8-93AD-872F1E457AF3} = {C5F08EB1-15F3-4F26-AA1B-B66E16108109}
+		{74D511C2-8C25-4FDE-B4DC-820784EA93E1} = {7687E5AE-4393-4013-9EA9-607AF87FD8B3}
 	EndGlobalSection
 EndGlobal

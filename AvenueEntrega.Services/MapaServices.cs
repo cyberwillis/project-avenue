@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using AvenueEntrega.DataContracts.Messages.Mapa;
 using AvenueEntrega.DataContracts.Messages.Problema;
 using AvenueEntrega.I18N;
@@ -256,10 +257,11 @@ namespace AvenueEntrega.Services
                                                                 problema.Destino,
                                                                 problema.AutonomiaVeiculo,
                                                                 problema.ValorCombustivel);
+                        IFormatProvider culture = Thread.CurrentThread.CurrentCulture;
 
                         response.Success = true;
                         response.Message = Resources.MapaServices_CalcularRota_Success_Message;
-                        response.CustoTotal = result.CustoTotal.ToString();
+                        response.CustoTotal = result.CustoTotal.ToString("n", culture);
                         response.MelhorCaminho = result.MelhorCaminho;
                     }
                     else
