@@ -55,8 +55,8 @@ b.	Avenie.Entrega.Web.WCF (API para consumo por outros sistemas, sem envio de ma
 
 
 ### Obs: 
-Instruções e detalhes sobre o projeto podem ser encontrados na pasta Documentation, na solução
-Lá existe desde a motivação e detalhes sobre a arquitetura até como instalar e configurar a aplicação.
+Instruções e detalhes sobre o projeto podem ser encontrados na pasta Documentation, dentro da solução.
+Lá tem informações desde a motivação e detalhes sobre a arquitetura até como instalar e configurar a aplicação.
 
 
 
