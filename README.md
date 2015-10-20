@@ -54,25 +54,8 @@ a.	AvenueEntrega.Web.MVC (portal de interação , envio de arquivo de map e busc
 b.	Avenie.Entrega.Web.WCF (API para consumo por outros sistemas, sem envio de mapa)
 
 
-##Instalação
+##Instruções e detalhes sobre o projeto podem ser encontrados na pasta Documentation, na solução
+Lá existe desde a motivação e detalhes sobre a arquitetura até como instalar e configurar a aplicação.
 
-A melhor maneira de efetuar os testes nesta aplicação é atravéz do visual studio caso esteja disponível.
 
-###Primeira opção
-
-1- Abrir a solução;
-
-2- Setar A solucao "AvenueEntrega.Web.MVC" e setar como principal (clicar com o botao direito e em seguida em "Set as StartUp Project" );
-
-3- Executar o projeto (F5);
-
-###Segunda opção
-
-1- Possui o IIS disponível numa máquina.
-
-2- Pegar o deploy enviado por e-mail à Natália, e coloca-lo numa pasta que possa ser mapeado pelo IIS como uma aplicação;
-
-3- Acessar a aplicação. (http://localhost/<nome do mapeamento no IIS>)
-
-4- O IIS possui um limite trafego de dados permitido pelo 
 
