@@ -60,3 +60,6 @@ Lá tem informações desde a motivação e detalhes sobre a arquitetura até co
 
 
 
+# Video (Solution)
+
+https://www.youtube.com/watch?v=xJgg10dGt4Q
