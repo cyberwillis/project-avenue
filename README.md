@@ -14,28 +14,28 @@ Visando fugir destas questões mais complexas por não ter toda a visão do nego
 
 2-	Disponibilizar um WebService (API) em que uma aplicação mobile ou um sistema externo pudesse ser desenvolvido para acessar este dado.
 
-##O desenvolvimento do portal segue a arquitetura em CRUD - N camadas (Onion Arquitecture):
+## O desenvolvimento do portal segue a arquitetura em CRUD - N camadas (Onion Arquitecture):
 
-###1-	Infrastructure Layer
+### 1-	Infrastructure Layer
 a.	AvenueEntrega.I18N (Internacionalização)
 
 b.	AvenueEntrega.Infrastructure (suporte para internacionalização)
 
-###2-	Domain Model Layer
+### 2-	Domain Model Layer
 a.	AvenueEntrega.Model (Modelo de domínio baseado nos requisitos – modelo pobre sem metodos)
 
 b.	AvenueEntrega.Rules (Regras de negocio para o domínio)
 
 c.	AvenueEntrega.Rules.UnitTest (Testes básicos para validação apenas da lógica de encontrar a melhor rota por custo)
 
-###3-	Repository Layer
+### 3-	Repository Layer
 a.	AvenueEntrega.RepositoryFile (Camada de persistência de arquivo txt)
 
 b.	AvenueEntrega.RepositoryNHibernate (Camada de persistência ORM para modelos de classes do sistema)
 
 c.	AvenueEntrega.RepositoryNHibernate.IntegratesTest (Camada para testes com banco de dados e persistencia)
 
-###4-	Services Layer
+### 4-	Services Layer
 a.	AvenueEntrega.DataContracts (camada de classes responsável por mensagerias trocadas entre o sistema do modelo e serviços)
 
 b.	AvenueEntrega.Service.ETL (camada responsável por instanciar o repositório de arquivo e tratar o arquivo txt enviado antes de persisti-lo)
@@ -48,7 +48,7 @@ e.	AvenueEntrega.Services (contém os serviços principais da aplicação)
 
 f.	AvenueEntrega.Services.UnitTest (Teste unitário na camada de serviço e mock de dados)
 
-###5-	Presentation Layer
+### 5-	Presentation Layer
 a.	AvenueEntrega.Web.MVC (portal de interação , envio de arquivo de map e busca por melhor rota)
 
 b.	Avenie.Entrega.Web.WCF (API para consumo por outros sistemas, sem envio de mapa)
