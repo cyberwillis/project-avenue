@@ -47,6 +47,7 @@
     <Compile Include="Converters\ValueConverter.cs" />
     <Compile Include="Dto\MapaRepositoryDto.cs" />
     <Compile Include="Dto\RotaRepositoryDto.cs" />
+    <Compile Include="Extensions\RotaRepositoryDtoExtension.cs" />
     <Compile Include="MapaFileRepository.cs" />
     <Compile Include="Messages\Mapa\CarregarMapaRequest.cs" />
     <Compile Include="Messages\Mapa\CarregarMapaResponse.cs" />

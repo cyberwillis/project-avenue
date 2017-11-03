@@ -35,8 +35,6 @@ namespace AvenueEntrega.Rules.UnitTest
             Assert.IsTrue(_testMapa.PossibleActions("E").Count == 2);
         }
 
-        
-
         [Test]
         public void Test2_Lower_Route_From_A_To_D_Will_Pass()
         {

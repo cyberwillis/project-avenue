@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using AvenueEntrega.Model.Entities;
 
 namespace AvenueEntrega.Rules
@@ -84,31 +86,185 @@ namespace AvenueEntrega.Rules
         public State ChiepestFirstSearch(string start, string goal)
         {
             State initialState = new State(start, null, 0.0m);
-
             IList<State> paths = new List<State>();
-
             IList<State> exploreds = new List<State>();
-
             IList<State> frontiers = new List<State>();
             frontiers.Add(initialState);
 
-            Action<State> addToExploredList = (state) => { exploreds.Add(state); };
+            Action<State> addStateToExploredList = (state) => { exploreds.Add(state); };
+            Action<IList<State>> addToFrontiersList = (list) => { foreach (var item in list) { frontiers.Add(item); } };
+            Action<State> removeFromFrontiersList = (state) => { frontiers.Remove(state); };
+            Action<State> addToGoalsList = (state) => { paths.Add(state); };
+            Action<IList<State>, decimal> removeStatesFromFrontierWithCostBiggerThanGoal = (listFrontiers, lowerCostToGoal) =>
+            {
+                for (var i = 0 ; i < listFrontiers.Count; i++ )
+                {
+                    State frontier = listFrontiers[i];
+
+                    if (frontier.Cost > lowerCostToGoal)
+                    {
+                        listFrontiers.RemoveAt(i);
+                        i--;
+                    }
+                }
+            };
+            Func<string,decimal,IList<State>,decimal> verifyIfTheGoalIsInsideTheFrontierAndGetItsLowestCostVersion = (g,c,fs) =>
+            {
+                for (var i = 0; i < fs.Count; i++)
+                {
+                    if (fs[i].Name.Equals(g))
+                    {
+                        if (c > fs[i].Cost)
+                            c = fs[i].Cost;
+                    }
+                }
+                return c;
+            };
+            Func<State, IList<State>> expandStateAndGetNewFrontiersNearBy = (state) =>
+            {
+                var actions = new List<State>();
+                var removes = new List<Rota>();
+
+                for (var i = 0; i < _rotas.Count; i++)
+                {
+                    if (_rotas[i].Origem.Equals(state.Name))
+                    {
+                        actions.Add(new State(_rotas[i].Destino, state, _rotas[i].Custo + state.Cost));//crio um action pois a rota sera eliminada da lista de rotas ... e nao pode sumir da lista de actions
+                        _rotas.RemoveAt(i);
+                        i--;
+                    } else if (_rotas[i].Destino.Equals(state.Name))
+                    {
+                        actions.Add(new State(_rotas[i].Origem, state, _rotas[i].Custo + state.Cost));
+                        _rotas.RemoveAt(i);
+                        i--;
+                    }
+                }
+
+                
+
+                return actions;
+            };
+            Func<IList<State>, State> getStateWithLowestCostFromFrontiers = (fs) =>
+            {
+                var cost = decimal.MaxValue;
+                State state = null;
+
+                for (var i = 0; i < fs.Count; i++)
+                {
+                    if (fs[i].Cost < cost)
+                    {
+                        state = fs[i];
+                        cost = state.Cost;
+                    }
+                }
+                return state;
+            };
+            Action<State, IList<State>> report = (s, f) =>
+            {
+                Console.Write("{0}({1}) => [ ", s.Name, s.Cost);
+                foreach (var state in f)
+                {
+                    Console.Write("{0}({1}) ", state.Name, state.Cost);
+                }
+                Console.Write(" ]");
+                Console.WriteLine("");
+            };
+
+            var costToTheGoal = decimal.MaxValue;
+            while (frontiers.Count > 0)
+            {
+                removeStatesFromFrontierWithCostBiggerThanGoal(frontiers, costToTheGoal);
+                var stateToExpand = getStateWithLowestCostFromFrontiers(frontiers);//get lowest cost state
+                if (!stateToExpand.Name.Equals(goal))
+                {
+                    addStateToExploredList(stateToExpand);
+                    var nearByFrontiers = expandStateAndGetNewFrontiersNearBy(stateToExpand);
+                    addToFrontiersList(nearByFrontiers);
+                    costToTheGoal = verifyIfTheGoalIsInsideTheFrontierAndGetItsLowestCostVersion(goal, costToTheGoal,frontiers);
+                    removeFromFrontiersList(stateToExpand);
+                }
+                else
+                {
+                    addToGoalsList(stateToExpand);
+                    removeFromFrontiersList(stateToExpand);
+                }
+                report(stateToExpand, frontiers);
+            }
+
+            return getStateWithLowestCostFromFrontiers(paths);
+        }
+
+        public State ChiepestFirstSearch_Old(string start, string goal)
+        {
+            State initialState = new State(start, null, 0.0m);
+            IList<State> paths = new List<State>();
+            IList<State> exploreds = new List<State>();
+            IList<State> frontiers = new List<State>();
+            frontiers.Add(initialState);
+
+            Action<State> addStateToExploredList = (state) => { exploreds.Add(state); };
             Action<IList<State>> addToFrontiersList = (list) => { foreach (var item in list) { frontiers.Add(item); } };
             Action<State> removeFromFrontiersList = (state) => { frontiers.Remove(state); };
             Action<State> addToPathsList = (state) => { paths.Add(state); };
+            Action<State, IList<State>> report = (s, f) =>
+            {
+                Console.Write("{0}({1}) => [ ", s.Name, s.Cost);
+                foreach (var state in f)
+                {
+                    Console.Write("{0}({1}) ", state.Name, state.Cost);
+                }
+                Console.Write(" ]");
+                Console.WriteLine("");
+            };
+            Action<IList<State>, decimal> RemoveStatesFromFrontierWithCostBiggerThanGoal = (listFrontiers, lowerCostToGoal) =>
+            {
+                var markToRemove = new List<State>();
 
+                foreach (var frontier in listFrontiers)
+                {
+                    if (frontier.Cost > lowerCostToGoal)
+                    {
+                        markToRemove.Add(frontier);
+                    }
+                }
+
+                //removendo as fronteiras marcadas
+                foreach (var item in markToRemove)
+                {
+                    listFrontiers.Remove(item);
+                }
+            };
+            Func<string, decimal, decimal> VerifyIfTheGoalIsInsideTheFrontierAndGetItsCost = (g, c) =>
+            {
+                foreach (var frontier in frontiers)
+                {
+                    if (frontier.Name.Equals(g))
+                    {
+                        if (c > frontier.Cost)
+                            c = frontier.Cost;
+                    }
+                }
+                return c;
+            };
+            
+
+
+            var costToTheGoal = decimal.MaxValue;
             while (frontiers.Count > 0)
             {
-                //get lowest cost state
-                var state = GetStateWithLowestCost(frontiers);
+                //RemoveStatesFromFrontierWithCostBiggerThanGoal(frontiers, costToTheGoal);
+
+                var state = GetStateWithLowestCostFromFrontiers(frontiers);//get lowest cost state
 
                 if (!state.Name.Equals(goal))
                 {
-                    addToExploredList(state);
+                    addStateToExploredList(state);
 
-                    //find frontiers for it
-                    var newFrontiers = GetFrontiersFrom(state);
+                    var newFrontiers = ExpandStateAndGetNewFrontiersNearBy_(state);
+
                     addToFrontiersList(newFrontiers);
+
+                    //costToTheGoal = VerifyIfTheGoalIsInsideTheFrontierAndGetItsCost(goal, costToTheGoal);
 
                     removeFromFrontiersList(state);
                 }
@@ -117,17 +273,12 @@ namespace AvenueEntrega.Rules
                     addToPathsList(state);
 
                     removeFromFrontiersList(state);
-                    //Console.WriteLine(state.Cost);
                 }
+
+                report(state, frontiers);
             }
 
-            var lowestPath = GetStateWithLowestCost(paths);
-
-            /*var testePath = finalPath.GetPath();
-            foreach (var p in testePath)
-            {
-                Console.WriteLine(p);
-            }*/
+            var lowestPath = GetStateWithLowestCostFromFrontiers(paths);
 
             return lowestPath;
         }
@@ -153,7 +304,7 @@ namespace AvenueEntrega.Rules
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
-        private IList<State> GetFrontiersFrom(State state)
+        private IList<State> ExpandStateAndGetNewFrontiersNearBy_(State state)
         {
             var actions = new List<State>();
             var removes = new List<Rota>();
@@ -187,7 +338,7 @@ namespace AvenueEntrega.Rules
         /// </summary>
         /// <param name="frontiers">List of frontiers available</param>
         /// <returns></returns>
-        private State GetStateWithLowestCost(IList<State> frontiers)
+        private State GetStateWithLowestCostFromFrontiers(IList<State> frontiers)
         {
             var cost = decimal.MaxValue;
             State state = null;
@@ -206,3 +357,42 @@ namespace AvenueEntrega.Rules
     }
 }
 
+/*
+Antes(17 rotas investigadas)
+----------------------------
+Arad(0,0) => [ Zerind(75,0) Sibiu(140,0) Timisoara(118,0)  ]
+Zerind(75,0) => [ Sibiu(140,0) Timisoara(118,0) Oradea(146,0)  ]
+Timisoara(118,0) => [ Sibiu(140,0) Oradea(146,0) Lugoj(229,0)  ]
+Sibiu(140,0) => [ Oradea(146,0) Lugoj(229,0) Oradea(291,0) Rimnicu Vilcea(220,0) Fagaras(239,0)  ]
+Oradea(146,0) => [ Lugoj(229,0) Oradea(291,0) Rimnicu Vilcea(220,0) Fagaras(239,0)  ]
+Rimnicu Vilcea(220,0) => [ Lugoj(229,0) Oradea(291,0) Fagaras(239,0) Craiova(366,0) Pitesti(317,0)  ]
+Lugoj(229,0) => [ Oradea(291,0) Fagaras(239,0) Craiova(366,0) Pitesti(317,0) Mehadia(299,0)  ]
+Fagaras(239,0) => [ Oradea(291,0) Craiova(366,0) Pitesti(317,0) Mehadia(299,0) Bucharest(450,0)  ]
+Oradea(291,0) => [ Craiova(366,0) Pitesti(317,0) Mehadia(299,0) Bucharest(450,0)  ]
+Mehadia(299,0) => [ Craiova(366,0) Pitesti(317,0) Bucharest(450,0) Drobeta(374,0)  ]
+Pitesti(317,0) => [ Craiova(366,0) Bucharest(450,0) Drobeta(374,0) Bucharest(418,0) Craiova(455,0)  ]
+Craiova(366,0) => [ Bucharest(450,0) Drobeta(374,0) Bucharest(418,0) Craiova(455,0) Drobeta(486,0)  ]
+Drobeta(374,0) => [ Bucharest(450,0) Bucharest(418,0) Craiova(455,0) Drobeta(486,0)  ]
+Bucharest(418,0) => [ Bucharest(450,0) Craiova(455,0) Drobeta(486,0)  ]
+Bucharest(450,0) => [ Craiova(455,0) Drobeta(486,0)  ]
+Craiova(455,0) => [ Drobeta(486,0)  ]
+Drobeta(486,0) => [  ]
+
+Depois(14 rotas investigadas)
+-----------------------------
+Arad(0,0) => [ Zerind(75,0) Sibiu(140,0) Timisoara(118,0)  ]
+Zerind(75,0) => [ Sibiu(140,0) Timisoara(118,0) Oradea(146,0)  ]
+Timisoara(118,0) => [ Sibiu(140,0) Oradea(146,0) Lugoj(229,0)  ]
+Sibiu(140,0) => [ Oradea(146,0) Lugoj(229,0) Oradea(291,0) Rimnicu Vilcea(220,0) Fagaras(239,0)  ]
+Oradea(146,0) => [ Lugoj(229,0) Oradea(291,0) Rimnicu Vilcea(220,0) Fagaras(239,0)  ]
+Rimnicu Vilcea(220,0) => [ Lugoj(229,0) Oradea(291,0) Fagaras(239,0) Craiova(366,0) Pitesti(317,0)  ]
+Lugoj(229,0) => [ Oradea(291,0) Fagaras(239,0) Craiova(366,0) Pitesti(317,0) Mehadia(299,0)  ]
+Fagaras(239,0) => [ Oradea(291,0) Craiova(366,0) Pitesti(317,0) Mehadia(299,0) Bucharest(450,0)  ]
+Oradea(291,0) => [ Craiova(366,0) Pitesti(317,0) Mehadia(299,0) Bucharest(450,0)  ]
+Mehadia(299,0) => [ Craiova(366,0) Pitesti(317,0) Bucharest(450,0) Drobeta(374,0)  ]
+Pitesti(317,0) => [ Craiova(366,0) Bucharest(450,0) Drobeta(374,0) Bucharest(418,0) Craiova(455,0)  ]
+Craiova(366,0) => [ Drobeta(374,0) Bucharest(418,0) Drobeta(486,0)  ]
+Drobeta(374,0) => [ Bucharest(418,0)  ]
+Bucharest(418,0) => [  ]
+
+*/
